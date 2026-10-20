@@ -1,0 +1,333 @@
+
+/* TAMPILAN TABEL JADWAL */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+caption {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+}
+
+th, td {
+    border: 1px solid #999;
+    padding: 12px;
+    text-align: left;
+}
+
+thead {
+    background-color: #174a7e;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f7fc;
+}
+
+tfoot {
+    background-color: #dce9f7;
+    font-weight: bold;
+}
+
+ol li {
+    margin-bottom: 8px;
+}
+
+
+
+/* ==================================
+   DESAIN MODERN FORM PENDAFTARAN
+   LAB 4 - JUNIOR WEB PROGRAMMER
+================================== */
+
+/* 1. LATAR BELAKANG HALAMAN */
+
+body.halaman-daftar {
+    max-width: 1040px;
+    background: linear-gradient(
+        135deg,
+        #eaf2ff,
+        #f8fafc
+    );
+    color: #243247;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* 2. HEADER GRADIENT BIRU */
+
+.halaman-daftar header {
+    background: linear-gradient(
+        135deg,
+        #12366b,
+        #3676cb
+    );
+    color: white;
+    text-align: center;
+    padding: 36px 20px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(20, 60, 120, 0.18);
+}
+
+.halaman-daftar header h1 {
+    margin-bottom: 8px;
+}
+
+.halaman-daftar header p {
+    color: #e5efff;
+}
+
+/* 3. MENU NAVIGASI */
+
+.halaman-daftar nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: white;
+    padding: 12px;
+    margin-top: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.halaman-daftar nav a {
+    color: #174a7e;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 14px;
+    margin-right: 0;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.halaman-daftar nav a:hover {
+    background-color: #eaf2ff;
+    color: #0d3665;
+}
+
+/* 4. AREA KONTEN */
+
+.halaman-daftar main section {
+    background-color: white;
+    padding: 28px;
+    margin-top: 24px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.halaman-daftar main h2 {
+    color: #174a7e;
+    margin-top: 0;
+}
+
+/* 5. KARTU FORMULIR */
+
+.halaman-daftar form {
+    max-width: 760px;
+    margin: 24px auto;
+    padding: 28px;
+    background-color: #f8fbff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-sizing: border-box;
+    accent-color: #2563eb;
+}
+
+/* 6. KELOMPOK DATA */
+
+.halaman-daftar fieldset {
+    background-color: white;
+    border: 1px solid #dbe5f1;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 22px;
+}
+
+.halaman-daftar legend {
+    color: #174a7e;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 8px;
+}
+
+/* 7. JARAK ANTAR INPUT */
+
+.halaman-daftar .form-row {
+    margin-bottom: 20px;
+}
+
+.halaman-daftar .form-row > label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+/* 8. DESAIN INPUT */
+
+.halaman-daftar .form-row input[type="text"],
+.halaman-daftar .form-row input[type="email"],
+.halaman-daftar .form-row input[type="tel"],
+.halaman-daftar .form-row input[type="date"],
+.halaman-daftar .form-row select,
+.halaman-daftar .form-row textarea {
+
+    display: block;
+    width: 100%;
+    padding: 13px 14px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+
+    background-color: white;
+    color: #1e293b;
+
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+/* 9. EFEK SAAT INPUT DIKLIK */
+
+.halaman-daftar .form-row input:focus,
+.halaman-daftar .form-row select:focus,
+.halaman-daftar .form-row textarea:focus {
+
+    outline: none;
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px
+        rgba(37, 99, 235, 0.15);
+}
+
+/* 10. RADIO DAN CHECKBOX */
+
+.halaman-daftar .options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+
+    padding: 10px 14px;
+    margin: 6px 10px 6px 0;
+
+    cursor: pointer;
+}
+
+/* 11. INPUT FILE */
+
+.halaman-daftar .form-row input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 14px;
+
+    border: 2px dashed #93b4e0;
+    border-radius: 10px;
+    background-color: #eff6ff;
+
+    box-sizing: border-box;
+}
+
+.halaman-daftar input[type="file"]::file-selector-button {
+    background-color: #174a7e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+/* 12. TOMBOL FORMULIR */
+
+.halaman-daftar .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.halaman-daftar .form-actions button {
+    padding: 13px 26px;
+    border: none;
+    border-radius: 9px;
+
+    background-color: #174a7e;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* EFEK HOVER TOMBOL DAFTAR */
+
+.halaman-daftar .form-actions button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* TOMBOL ATUR ULANG */
+
+.halaman-daftar .form-actions button[type="reset"] {
+    background-color: #64748b;
+}
+
+.halaman-daftar .form-actions button[type="reset"]:hover {
+    background-color: #475569;
+}
+
+/* 13. FOOTER */
+
+.halaman-daftar footer {
+    text-align: center;
+    color: #64748b;
+    padding: 20px;
+}
+
+/* 14. TAMPILAN RESPONSIF HP */
+
+@media (max-width: 600px) {
+
+    body.halaman-daftar {
+        padding: 12px;
+    }
+
+    .halaman-daftar header {
+        padding: 26px 16px;
+    }
+
+    .halaman-daftar main section {
+        padding: 16px;
+    }
+
+    .halaman-daftar form {
+        padding: 16px;
+    }
+
+    .halaman-daftar fieldset {
+        padding: 14px;
+    }
+
+    .halaman-daftar .form-actions {
+        flex-direction: column;
+    }
+
+    .halaman-daftar .form-actions button {
+        width: 100%;
+    }
+}
