@@ -1,0 +1,102 @@
+/* KALKULATOR BMI */
+/* Pengaturan dasar */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Judul kalkulator */
+h1 {
+  color: white;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+/* Label input */
+label {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+}
+
+/* Kotak input */
+input {
+  width: 100%;
+  max-width: 380px;
+  padding: 14px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  background-color: white;
+}
+
+/* Efek saat input diklik */
+input:focus {
+  border-color: #facc15;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Tombol hitung */
+button {
+  width: 100%;
+  max-width: 380px;
+  padding: 14px;
+  background-color: #1e40af;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Efek tombol */
+button:hover {
+  background-color: #1e3a8a;
+  transform: translateY(-2px);
+}
+
+/* Area hasil BMI */
+#hasil {
+  width: 100%;
+  max-width: 380px;
+  min-height: 50px;
+  padding: 15px;
+  background-color: white;
+  color: #1e40af;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 25px;
+  overflow-wrap: anywhere;
+}
+
+/* Tampilan layar HP */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 25px;
+  }
+
+  input, button {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,227 @@
+--- BILANGAN GENAP ---
+MULAI
+INPUT bilangan bulat
+
+JIKA input tidak valid
+    TAMPILKAN pesan kesalahan
+    SELESAI
+
+JIKA bilangan MOD 2 = 0
+    jenis = "Genap"
+SELAIN ITU
+    jenis = "Ganjil"
+
+JIKA bilangan > 0
+    sifat = "Positif"
+JIKA TIDAK, JIKA bilangan < 0
+    sifat = "Negatif"
+SELAIN ITU
+    sifat = "Nol"
+
+TAMPILKAN jenis dan sifat
+SELESAI
+
+
+--- PROGRAM TARIF PARKIR ---
+MULAI
+INPUT lama parkir dalam jam
+
+JIKA input tidak valid atau <= 0
+    TAMPILKAN error
+    SELESAI
+
+BULATKAN lama parkir ke atas
+
+HITUNG hari penuh = jam DIV 24
+HITUNG sisa jam = jam MOD 24
+
+JIKA sisa jam = 0
+    biaya sisa = 0
+JIKA sisa jam <= 2
+    biaya sisa = 3000
+SELAIN ITU
+    biaya sisa = 3000 +
+                 (sisa jam - 2) * 2000
+
+JIKA biaya sisa > 15000
+    biaya sisa = 15000
+
+TOTAL = hari penuh * 15000 + biaya sisa
+TAMPILKAN TOTAL
+SELESAI
+
+
+--- KALKULATOR SEDERHANA ---
+MULAI
+INPUT angka1
+INPUT operator
+INPUT angka2
+
+JIKA input angka tidak valid
+    TAMPILKAN error
+    SELESAI
+
+PILIH operator
+    "+" : hasil = angka1 + angka2
+    "-" : hasil = angka1 - angka2
+    "*" : hasil = angka1 * angka2
+    "/" :
+        JIKA angka2 = 0
+            TAMPILKAN error
+        SELAIN ITU
+            hasil = angka1 / angka2
+    LAINNYA:
+        TAMPILKAN operator tidak dikenal
+
+JIKA tidak ada error
+    TAMPILKAN hasil
+
+SELESAI
+
+
+--- PENENTU KATEGORI BMI ---
+MULAI
+INPUT berat badan
+INPUT tinggi badan dalam meter
+
+JIKA berat <= 0 ATAU tinggi <= 0
+    TAMPILKAN error
+    SELESAI
+
+BMI = berat / (tinggi * tinggi)
+
+JIKA BMI < 18.5
+    kategori = "Kurang"
+JIKA TIDAK, JIKA BMI < 25
+    kategori = "Normal"
+JIKA TIDAK, JIKA BMI < 30
+    kategori = "Lebih"
+SELAIN ITU
+    kategori = "Obesitas"
+
+TAMPILKAN BMI dan kategori
+SELESAI
+
+
+--- TABEL PERKALIAN 1 SAMPAI 10 ---
+MULAI
+UNTUK baris dari 1 sampai 10
+    UNTUK kolom dari 1 sampai 10
+        hasil = baris * kolom
+        TAMPILKAN hasil
+    SELESAI PERULANGAN KOLOM
+    PINDAH BARIS
+SELESAI PERULANGAN BARIS
+SELESAI
+
+
+--- POLA SEGITIGA, PIRAMIDA & PERSEGI ANGKA ---
+MULAI
+TETAPKAN tinggi = 5
+
+UNTUK baris = 1 sampai tinggi
+    CETAK bintang sebanyak nomor baris
+
+UNTUK baris = 1 sampai tinggi
+    CETAK spasi sebanyak tinggi - baris
+    CETAK bintang sebanyak 2 * baris - 1
+
+UNTUK baris = 1 sampai tinggi
+    UNTUK kolom = 1 sampai tinggi
+        CETAK nomor kolom
+    PINDAH BARIS
+
+SELESAI
+
+
+--- FIZZBUZZ ANGKA 1 SAMPAI 50 ---
+MULAI
+UNTUK angka = 1 sampai 50
+
+    JIKA angka MOD 3 = 0
+       DAN angka MOD 5 = 0
+        CETAK "FizzBuzz"
+
+    JIKA TIDAK, JIKA angka MOD 3 = 0
+        CETAK "Fizz"
+
+    JIKA TIDAK, JIKA angka MOD 5 = 0
+        CETAK "Buzz"
+
+    SELAIN ITU
+        CETAK angka
+
+SELESAI PERULANGAN
+SELESAI
+
+
+--- HITUNG JUMLAH DIGIT ANGKA ---
+MULAI
+INPUT angka
+jumlah = 0
+
+SELAMA angka > 0
+    digit = angka MOD 10
+    jumlah = jumlah + digit
+    angka = FLOOR(angka / 10)
+
+TAMPILKAN jumlah
+SELESAI
+
+
+--- MAIN TEBAK ANGKA ---
+MULAI
+rahasia = ANGKA ACAK 1 SAMPAI 100
+percobaan = 0
+
+LAKUKAN
+    INPUT tebakan
+
+    JIKA pengguna membatalkan
+        HENTIKAN PERMAINAN
+
+    JIKA input tidak valid
+        MINTA INPUT LAGI
+
+    percobaan = percobaan + 1
+
+    JIKA tebakan < rahasia
+        TAMPILKAN "Tebak lebih tinggi"
+
+    JIKA tebakan > rahasia
+        TAMPILKAN "Tebak lebih rendah"
+
+    JIKA tebakan = rahasia
+        TAMPILKAN "Tebakan benar"
+
+SELAMA tebakan tidak sama dengan rahasia
+
+SELESAI
+
+
+--- KALKULATOR BMI ---
+MULAI
+AMBIL nilai berat badan
+AMBIL nilai tinggi badan
+
+KETIKA tombol Hitung diklik:
+    UBAH berat menjadi Number
+    UBAH tinggi dari cm menjadi meter
+
+    JIKA input kosong atau tidak valid
+        TAMPILKAN pesan kesalahan
+        HENTIKAN perhitungan
+
+    BMI = berat / (tinggi * tinggi)
+
+    JIKA BMI < 18.5
+        kategori = "Kurang"
+    JIKA BMI >= 30
+        kategori = "Obesitas"
+    JIKA BMI >= 25
+        kategori = "Lebih"
+    SELAIN ITU
+        kategori = "Normal"
+
+    TAMPILKAN BMI dan kategori
+SELESAI

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator BMI</title>
+  <link rel="stylesheet" href="./css/style1.css">
+</head>
+<body>
+  <h1>Kalkulator BMI</h1>
+
+  <label for="berat">Berat (kg)</label>
+  <input type="number" id="berat" min="1">
+
+  <br><br>
+
+  <label for="tinggi">Tinggi (cm)</label>
+  <input type="number" id="tinggi" min="1">
+
+  <br><br>
+
+  <button id="hitung">Hitung BMI</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    const tombol = document.getElementById("hitung");
+
+    tombol.addEventListener("click", () => {
+      const inputBerat =
+        document.getElementById("berat").value;
+      const inputTinggi =
+        document.getElementById("tinggi").value;
+
+      const berat = Number(inputBerat);
+      const tinggiMeter = Number(inputTinggi) / 100;
+
+      const hasil = document.getElementById("hasil");
+
+      if (
+        inputBerat.trim() === "" ||
+        inputTinggi.trim() === "" ||
+        !Number.isFinite(berat) ||
+        !Number.isFinite(tinggiMeter) ||
+        berat <= 0 ||
+        tinggiMeter <= 0
+      ) {
+        hasil.textContent =
+          "Masukkan berat dan tinggi yang valid.";
+        return;
+      }
+
+      const bmi = berat / (tinggiMeter * tinggiMeter);
+
+      let kategori = "Normal";
+
+      if (bmi < 18.5) {
+        kategori = "Kurang";
+      } else if (bmi >= 30) {
+        kategori = "Obesitas";
+      } else if (bmi >= 25) {
+        kategori = "Lebih";
+      }
+
+      hasil.textContent =
+        `BMI ${bmi.toFixed(1)} (${kategori})`;
+    });
+  </script>
+</body>
+</html>
