@@ -1,0 +1,10 @@
+{
+  "name": "hari-06-struktur-data",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lab3": "node lab3.js",
+    "lab4": "node lab4.js"
+  }
+}

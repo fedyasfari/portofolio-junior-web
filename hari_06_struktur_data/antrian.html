@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Antrean Loket</title>
+</head>
+
+<body>
+  <h1>Antrean Loket</h1>
+
+  <p>
+    Sedang dipanggil:
+    <strong id="dipanggil">-</strong>
+  </p>
+
+  <p>
+    Menunggu: <span id="jumlah">0</span>
+  </p>
+
+  <button id="ambil">Ambil Nomor</button>
+  <button id="panggil">Panggil Berikutnya</button>
+
+  <h2>Daftar Antrean</h2>
+  <ul id="daftar"></ul>
+
+  <script type="module">
+    import { Queue } from './structures.js';
+
+    const antrian = new Queue();
+    let nomorTerakhir = 0;
+
+    const dipanggil =
+      document.getElementById('dipanggil');
+
+    const jumlah =
+      document.getElementById('jumlah');
+
+    const daftar =
+      document.getElementById('daftar');
+
+    // Format nomor A001, A002, dan seterusnya
+    function formatNomor(angka) {
+      return 'A' + String(angka).padStart(3, '0');
+    }
+
+    // Menampilkan antrean menggunakan toArray()
+    function tampilkanDaftar() {
+      daftar.textContent = '';
+
+      for (const nomor of antrian.toArray()) {
+        const li = document.createElement('li');
+        li.textContent = nomor;
+        daftar.append(li);
+      }
+
+      jumlah.textContent = antrian.size();
+    }
+
+    // Tombol Ambil Nomor
+    document.getElementById('ambil')
+      .addEventListener('click', () => {
+        nomorTerakhir++;
+
+        const nomor = formatNomor(nomorTerakhir);
+        antrian.enqueue(nomor);
+
+        tampilkanDaftar();
+      });
+
+    // Tombol Panggil Berikutnya
+    document.getElementById('panggil')
+      .addEventListener('click', () => {
+        dipanggil.textContent = antrian.isEmpty()
+          ? 'Antrean kosong'
+          : antrian.dequeue();
+
+        tampilkanDaftar();
+      });
+
+    tampilkanDaftar();
+  </script>
+</body>
+</html>

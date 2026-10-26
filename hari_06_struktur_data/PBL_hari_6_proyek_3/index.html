@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyek JavaScript: Editor Undo/Redo dan Antrean Loket menggunakan Stack dan Queue.">
+  <title>PBL Hari 6 — Editor & Antrean Loket</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div class="eyebrow">PBL HARI 6 · PROYEK 3 · BAGIAN 1</div>
+      <h1>Editor Catatan & Antrean Loket</h1>
+      <p>Dua aplikasi sederhana menggunakan struktur data <strong>Stack</strong> dan <strong>Queue</strong>.</p>
+    </header>
+
+    <div class="grid-utama">
+      <section class="panel" aria-labelledby="judul-editor">
+        <div class="panel-header">
+          <span class="ikon" aria-hidden="true">✎</span>
+          <div>
+            <div class="kicker">FITUR A · DUA STACK</div>
+            <h2 id="judul-editor">Editor Undo / Redo</h2>
+          </div>
+        </div>
+        <label class="label" for="editor">Tulis catatan Anda</label>
+        <textarea id="editor" rows="9" placeholder="Tulis catatan di sini, kemudian coba Undo dan Redo..."></textarea>
+        <div class="aksi-editor">
+          <button id="undo" type="button" disabled>↶ Undo</button>
+          <button id="redo" type="button" disabled>↷ Redo</button>
+        </div>
+        <p id="info" class="informasi" aria-live="polite"></p>
+        <p id="status-catatan" class="bantuan" aria-live="polite">Catatan disimpan otomatis di browser.</p>
+        <p class="tip">Riwayat maksimal 50 langkah, disimpan setiap jeda mengetik 600 ms. Pintasan: Ctrl+Z dan Ctrl+Y (atau Ctrl+Shift+Z).</p>
+      </section>
+
+      <section class="panel" aria-labelledby="judul-loket">
+        <div class="panel-header">
+          <span class="ikon ikon-loket" aria-hidden="true">≡</span>
+          <div>
+            <div class="kicker">FITUR B · QUEUE</div>
+            <h2 id="judul-loket">Antrean Loket</h2>
+          </div>
+        </div>
+        <p class="tanggal" id="tanggal-loket">Tanggal loket</p>
+        <div class="layar-loket">
+          <span>SEDANG DIPANGGIL</span>
+          <strong id="dipanggil" aria-live="polite">-</strong>
+        </div>
+        <div class="baris-jumlah">
+          <span>Nomor yang menunggu</span>
+          <strong id="jumlah" aria-live="polite">0</strong>
+        </div>
+        <div class="aksi-loket">
+          <button id="ambil" type="button">+ Ambil Nomor</button>
+          <button id="panggil" type="button" class="secondary">Panggil Berikutnya</button>
+        </div>
+        <button id="reset" type="button" class="danger">Reset Antrean</button>
+        <p id="pemberitahuan" class="informasi" role="status" aria-live="polite">Silakan ambil nomor antrean.</p>
+        <div class="daftar-grid">
+          <div>
+            <h3>Daftar menunggu</h3>
+            <ol id="daftar" class="daftar-nomor"></ol>
+          </div>
+          <div>
+            <h3>5 panggilan terakhir</h3>
+            <ol id="riwayat" class="daftar-nomor"></ol>
+          </div>
+        </div>
+        <p class="tip">Nomor mulai dari A001 setiap hari. Data tetap ada saat halaman dimuat ulang di browser yang sama.</p>
+      </section>
+    </div>
+    <footer>Praktikum Struktur Data JavaScript — Hari 6. Proyek ini dapat dikembangkan pada Hari 7.</footer>
+  </main>
+
+  <script type="module" src="./js/editor.js"></script>
+  <script type="module" src="./js/loket.js"></script>
+</body>
+</html>

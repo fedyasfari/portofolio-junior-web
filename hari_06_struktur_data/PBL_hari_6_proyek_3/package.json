@@ -1,0 +1,11 @@
+{
+  "name": "pbl-hari-6-proyek-3",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PBL Hari 6: Editor Undo/Redo dan Antrean Loket",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/structures.test.js"
+  }
+}

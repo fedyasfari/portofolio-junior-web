@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengujian Stack JavaScript</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 25px;
+      color: #1e293b;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1d4ed8;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #00000012;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 11px 18px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      margin: 5px 4px 5px 0;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .hasil {
+      background: #eff6ff;
+      padding: 15px;
+      margin-top: 12px;
+      border-radius: 7px;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Pengujian Struktur Data Stack</h1>
+
+  <!-- SOAL 2 -->
+  <div class="card">
+    <h2>Soal 2 - Operasi Stack</h2>
+
+    <input id="inputStack"
+           placeholder="Masukkan item, contoh: Buku A">
+
+    <button id="btnPush">Push</button>
+    <button id="btnPop">Pop</button>
+    <button id="btnPeek">Peek</button>
+    <button id="btnKosong">Cek Kosong</button>
+
+    <div class="hasil">
+      <p id="pesanStack">Belum ada operasi.</p>
+      <p>Isi Stack: <strong id="isiStack">[]</strong></p>
+    </div>
+  </div>
+
+  <!-- SOAL 3 -->
+  <div class="card">
+    <h2>Soal 3 - Validasi Kurung Seimbang</h2>
+
+    <input id="inputKurung"
+           placeholder="Contoh: (a+b)*[c-d]">
+
+    <button id="btnKurung">Periksa Kurung</button>
+
+    <div class="hasil" id="hasilKurung">
+      Hasil pemeriksaan akan tampil di sini.
+    </div>
+  </div>
+
+  <!-- SOAL 4A -->
+  <div class="card">
+    <h2>Soal 4A - Membalik String</h2>
+
+    <input id="inputBalik"
+           placeholder="Contoh: BELAJAR">
+
+    <button id="btnBalik">Balik String</button>
+
+    <div class="hasil" id="hasilBalik">
+      Hasil pembalikan akan tampil di sini.
+    </div>
+  </div>
+
+  <!-- SOAL 4B -->
+  <div class="card">
+    <h2>Soal 4B - Pemeriksaan Palindrom</h2>
+
+    <input id="inputPalindrom"
+           placeholder="Contoh: Kasur rusak">
+
+    <button id="btnPalindrom">Periksa Palindrom</button>
+
+    <div class="hasil" id="hasilPalindrom">
+      Hasil pemeriksaan akan tampil di sini.
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+
+  // Import Stack
+  import { Stack } from './structures.js';
+
+  // Import fungsi dari JS yang Anda buat
+  import {
+    kurungSeimbang,
+    balikString,
+    adalahPalindrom
+  } from './latihan-stack.js';
+
+  // ===================================
+  // SOAL 2 - STACK
+  // ===================================
+
+  const stack = new Stack();
+
+  const inputStack =
+    document.getElementById('inputStack');
+
+  const pesanStack =
+    document.getElementById('pesanStack');
+
+  const isiStack =
+    document.getElementById('isiStack');
+
+  function tampilkanStack() {
+    isiStack.textContent =
+      JSON.stringify(stack.items);
+  }
+
+  document.getElementById('btnPush')
+    .addEventListener('click', () => {
+
+      const item = inputStack.value.trim();
+
+      if (item === '') {
+        pesanStack.textContent =
+          'Masukkan item terlebih dahulu.';
+        return;
+      }
+
+      stack.push(item);
+
+      pesanStack.textContent =
+        'Berhasil memasukkan: ' + item;
+
+      inputStack.value = '';
+
+      tampilkanStack();
+    });
+
+  document.getElementById('btnPop')
+    .addEventListener('click', () => {
+
+      const item = stack.pop();
+
+      pesanStack.textContent =
+        item === undefined
+        ? 'Stack kosong, tidak bisa Pop.'
+        : 'Item dikeluarkan: ' + item;
+
+      tampilkanStack();
+    });
+
+  document.getElementById('btnPeek')
+    .addEventListener('click', () => {
+
+      const item = stack.peek();
+
+      pesanStack.textContent =
+        item === undefined
+        ? 'Stack kosong.'
+        : 'Item paling atas: ' + item;
+    });
+
+  document.getElementById('btnKosong')
+    .addEventListener('click', () => {
+
+      pesanStack.textContent =
+        stack.isEmpty()
+        ? 'Stack dalam keadaan kosong.'
+        : 'Stack masih berisi item.';
+    });
+
+  // ===================================
+  // SOAL 3 - KURUNG SEIMBANG
+  // ===================================
+
+  document.getElementById('btnKurung')
+    .addEventListener('click', () => {
+
+      const teks =
+        document.getElementById('inputKurung').value;
+
+      const hasil = kurungSeimbang(teks);
+
+      document.getElementById('hasilKurung')
+        .textContent = hasil
+          ? 'BENAR - Kurung seimbang'
+          : 'SALAH - Kurung tidak seimbang';
+    });
+
+  // ===================================
+  // SOAL 4A - BALIK STRING
+  // ===================================
+
+  document.getElementById('btnBalik')
+    .addEventListener('click', () => {
+
+      const teks =
+        document.getElementById('inputBalik').value;
+
+      const hasil = balikString(teks);
+
+      document.getElementById('hasilBalik')
+        .textContent = 'Hasil: ' + hasil;
+    });
+
+  // ===================================
+  // SOAL 4B - PALINDROM
+  // ===================================
+
+  document.getElementById('btnPalindrom')
+    .addEventListener('click', () => {
+
+      const teks =
+        document.getElementById('inputPalindrom').value;
+
+      const hasil = adalahPalindrom(teks);
+
+      document.getElementById('hasilPalindrom')
+        .textContent = hasil
+          ? 'BENAR - Teks adalah palindrom'
+          : 'SALAH - Bukan palindrom';
+    });
+
+</script>
+
+</body>
+</html>
