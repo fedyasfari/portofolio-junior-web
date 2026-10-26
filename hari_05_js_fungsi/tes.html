@@ -1,0 +1,152 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/hari_05_js_fungsi/style1.css">
+  </head>
+
+  <body>
+    <h2 id="angka">0</h2>
+
+    <button id="tambah">Tambah</button>
+    <button id="kurang">Kurang</button>
+    <button id="reset">Reset</button>
+
+    <form id="form-tugas">
+      <label for="teks-tugas">Tugas baru</label>
+
+      <input id="teks-tugas" type="text" maxlength="7" required />
+
+      <button type="submit">Tambah</button>
+    </form>
+
+    <ul id="daftar-tugas"></ul>
+
+    <p id="jumlah-tugas">Tugas tersisa: 0</p>
+    
+<script>
+  // ==================================
+  // BAGIAN 1: COUNTER ANGKA
+  // ==================================
+
+  let hitung = 0;
+
+  const angka = document.getElementById("angka");
+
+  function perbarui() {
+    angka.textContent = hitung;
+  }
+
+  // Tombol tambah
+  document.getElementById("tambah").addEventListener("click", () => {
+    hitung++;
+    perbarui();
+  });
+
+  // Tombol kurang
+  document.getElementById("kurang").addEventListener("click", () => {
+    hitung--;
+    perbarui();
+  });
+
+  // Tombol reset
+  document.getElementById("reset").addEventListener("click", () => {
+    hitung = 0;
+    perbarui();
+  });
+
+
+  // ==================================
+  // BAGIAN 2: DAFTAR TUGAS
+  // ==================================
+
+  // Mengambil elemen HTML
+  const form = document.getElementById("form-tugas");
+  const inputTugas = document.getElementById("teks-tugas");
+  const daftar = document.getElementById("daftar-tugas");
+  const jumlahTugas = document.getElementById("jumlah-tugas");
+
+  // Menghitung tugas yang belum selesai
+  function perbaruiJumlah() {
+    const sisa = daftar.querySelectorAll("li:not(.selesai)").length;
+
+    jumlahTugas.textContent = `Tugas tersisa: ${sisa}`;
+  }
+
+  // Ketika tombol Tambah ditekan atau Enter
+  form.addEventListener("submit", (event) => {
+
+    // Mencegah halaman reload
+    event.preventDefault();
+
+    // Mengambil teks dari input
+    const teks = inputTugas.value.trim();
+
+    // Validasi input
+    if (teks === "") {
+      alert("Tugas tidak boleh kosong!");
+      return;
+    }
+
+    if (teks.length > 7) {
+      alert("Maksimal 7 karakter!");
+      return;
+    }
+
+    // Membuat elemen li baru
+    const item = document.createElement("li");
+
+    // Membuat checkbox
+    const centang = document.createElement("input");
+    centang.type = "checkbox";
+    centang.setAttribute(
+      "aria-label",
+      `Tandai ${teks} sebagai selesai`
+    );
+
+    // Membuat teks tugas
+    const tulisan = document.createElement("span");
+    tulisan.className = "teks-tugas";
+    tulisan.textContent = teks;
+
+    // Membuat tombol hapus
+    const hapus = document.createElement("button");
+    hapus.type = "button";
+    hapus.className = "hapus";
+    hapus.textContent = "Hapus";
+
+    // Menandai tugas selesai
+    centang.addEventListener("change", () => {
+      item.classList.toggle("selesai");
+      perbaruiJumlah();
+    });
+
+    // Menghapus tugas
+    hapus.addEventListener("click", () => {
+      item.remove();
+      perbaruiJumlah();
+    });
+
+    // Menambahkan komponen ke item
+    item.append(centang, tulisan, hapus);
+
+    // Menampilkan tugas
+    daftar.append(item);
+
+    // Memperbarui jumlah tugas
+    perbaruiJumlah();
+
+    // MENGOSONGKAN INPUT SETELAH TAMBAH
+    form.reset();
+
+    // Mengarahkan kursor ke input lagi
+    inputTugas.focus();
+
+  });
+</script>
+
+  </body>
+</html>

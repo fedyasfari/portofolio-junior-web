@@ -1,0 +1,253 @@
+
+/* ==============================
+   1. PENGATURAN DASAR
+============================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  width: 90%;
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 35px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  color: #1e293b;
+}
+
+/* ==============================
+   2. TAMPILAN COUNTER ANGKA
+============================== */
+
+#angka {
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: white;
+  text-align: center;
+  font-size: 60px;
+  padding: 25px;
+  margin: 0 0 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.25);
+}
+
+/* ==============================
+   3. TOMBOL UMUM
+============================== */
+
+button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: white;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* Tombol Tambah */
+#tambah {
+  background-color: #16a34a;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* Tombol Kurang */
+#kurang {
+  background-color: #f59e0b;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* Tombol Reset */
+#reset {
+  background-color: #ef4444;
+  margin-bottom: 8px;
+}
+
+/* ==============================
+   4. FORM DAFTAR TUGAS
+============================== */
+
+#form-tugas {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 2px solid #e2e8f0;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+#form-tugas label {
+  grid-column: 1 / -1;
+  font-size: 19px;
+  font-weight: bold;
+  color: #1e40af;
+}
+
+#teks-tugas {
+  min-width: 0;
+  width: 100%;
+  padding: 13px;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#teks-tugas:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px #dbeafe;
+}
+
+/* Tombol tambah tugas */
+#form-tugas button {
+  background-color: #2563eb;
+  white-space: nowrap;
+}
+
+/* ==============================
+   5. DAFTAR TUGAS
+============================== */
+
+#daftar-tugas {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#daftar-tugas li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+#daftar-tugas li:hover {
+  background-color: #eff6ff;
+}
+
+/* Checkbox */
+#daftar-tugas input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #16a34a;
+  flex-shrink: 0;
+}
+
+/* Tulisan tugas */
+.teks-tugas {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  color: #334155;
+}
+
+/* Tugas sudah selesai */
+#daftar-tugas li.selesai {
+  background-color: #dcfce7;
+  border-color: #86efac;
+}
+
+.selesai .teks-tugas {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+/* Tombol hapus */
+.hapus {
+  background-color: #ef4444;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+/* Tampilan jika belum ada tugas */
+#daftar-tugas:empty::before {
+  content: "Belum ada tugas yang ditambahkan.";
+  display: block;
+  text-align: center;
+  padding: 20px;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* ==============================
+   6. JUMLAH TUGAS TERSISA
+============================== */
+
+#jumlah-tugas {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid #bfdbfe;
+}
+
+/* ==============================
+   7. RESPONSIF UNTUK HP
+============================== */
+
+@media (max-width: 480px) {
+  body {
+    width: 94%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  #angka {
+    font-size: 45px;
+  }
+
+  button {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  #form-tugas {
+    grid-template-columns: 1fr;
+  }
+
+  #form-tugas label {
+    grid-column: 1;
+  }
+
+  #form-tugas button {
+    width: 100%;
+  }
+}
