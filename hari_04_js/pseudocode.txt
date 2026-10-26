@@ -225,3 +225,63 @@ KETIKA tombol Hitung diklik:
 
     TAMPILKAN BMI dan kategori
 SELESAI
+
+
+
+--- PENGOLAH NILAI ---
+
+```text
+MULAI
+  Buat array daftarNama dan daftarNilai
+  Tentukan batas nilai 0-100 dan batas lulus 70
+  jalan = benar
+
+  SELAMA jalan = benar
+    TAMPILKAN menu 1-4
+    INPUT pilihan
+
+    PILIH pilihan
+      1: INPUT nama dan nilai
+         JIKA nama kosong ATAU nilai kosong / NaN / tidak hingga / di luar 0-100
+           TAMPILKAN pesan kesalahan
+         JIKA VALID
+           TAMBAHKAN nama ke daftarNama dan nilai ke daftarNilai
+
+      2: JIKA data kosong, TAMPILKAN pesan
+         JIKA ADA DATA
+           TENTUKAN jumlah = 0, tertinggi = nilai pertama, terendah = nilai pertama
+           UNTUK setiap nilai
+             TAMBAHKAN ke jumlah
+             PERBARUI nilai tertinggi dan terendah
+             HITUNG lulus / tidak lulus
+             HITUNG setiap grade A/B/C/D
+           rata = jumlah / banyak siswa
+           TAMPILKAN semua statistik dengan rata-rata dua desimal
+
+           SALIN kedua array
+           URUTKAN dengan BUBBLE SORT secara menurun
+             SETIAP pertukaran nilai HARUS diikuti pertukaran nama
+           TAMPILKAN daftar peringkat
+           UNTUK setiap grade A/B/C/D
+             TAMPILKAN bintang sebanyak siswa di grade tersebut
+
+      3: JIKA data kosong, TAMPILKAN pesan
+         JIKA ADA DATA
+           UNTUK tiap siswa dengan indeks
+             JIKA nilai >= 85 grade A
+             JIKA nilai >= 70 grade B
+             JIKA nilai >= 55 grade C
+             SELAIN ITU grade D
+             STATUS lulus jika nilai >= 70
+             TAMPILKAN nama, nilai, grade, status
+
+      4: jalan = salah
+         TAMPILKAN Terima kasih
+
+      LAINNYA: TAMPILKAN pilihan menu tidak valid
+    SELESAI PILIHAN
+  AKHIR SELAMA
+
+  TUTUP readline
+SELESAI
+```
