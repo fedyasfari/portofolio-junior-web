@@ -1,0 +1,6 @@
+// CONTOH KODE SEBELUM - SIMULASI; BUKAN BERKAS ASLI PROYEK 2 PENGGUNA
+export function tambah(a,b){var hasil=a+b;return hasil}
+export function kurang(a,b){return a-b}
+export function kali(a,b){return a*b}
+export function bagi(a,b){if(b==0){throw new Error('Tidak bisa dibagi nol')}return a/b}
+export function hitung(a,op,b){var hasil;if(op=='+'){hasil=tambah(a,b)}else if(op=='-'){hasil=kurang(a,b)}else if(op=='*'){hasil=kali(a,b)}else{hasil=bagi(a,b)}return hasil}

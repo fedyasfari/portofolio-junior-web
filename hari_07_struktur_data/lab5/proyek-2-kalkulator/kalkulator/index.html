@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator - Proyek 2</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="wadah">
+      <h1>Kalkulator</h1>
+      <p><a href="../validator/index.html">Ke Form Validator →</a></p>
+      <output id="layar" aria-live="polite">0</output>
+      <section id="papan" class="papan" aria-label="Tombol kalkulator">
+        <button data-aksi="reset">C</button>
+        <button data-aksi="hapus">⌫</button>
+        <button data-operator="/">÷</button>
+        <button data-operator="*">×</button>
+        <button data-angka="7">7</button><button data-angka="8">8</button>
+        <button data-angka="9">9</button><button data-operator="-">−</button>
+        <button data-angka="4">4</button><button data-angka="5">5</button>
+        <button data-angka="6">6</button><button data-operator="+">+</button>
+        <button data-angka="1">1</button><button data-angka="2">2</button>
+        <button data-angka="3">3</button><button data-aksi="sama">=</button>
+        <button data-angka="0">0</button><button data-angka=".">.</button>
+      </section>
+      <h2>Riwayat (5 terbaru)</h2>
+      <ol id="riwayat"></ol>
+    </main>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

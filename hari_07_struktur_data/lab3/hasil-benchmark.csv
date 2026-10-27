@@ -1,0 +1,7 @@
+Jumlah data,Algoritma,Waktu (ms),Status,Valid
+10000,bubbleSort,76.465,"SELESAI",YA
+10000,mergeSort,5.695,"SELESAI",YA
+10000,Array.sort,2.985,"SELESAI",YA
+100000,bubbleSort,—,"> 15000 ms (batas waktu)",belum diverifikasi
+100000,mergeSort,28.007,"SELESAI",YA
+100000,Array.sort,35.891,"SELESAI",YA

@@ -1,0 +1,188 @@
+
+> proyek-3-antrian@1.0.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: nomor berturut A001, A002, A003
+ok 1 - nomor berturut A001, A002, A003
+  ---
+  duration_ms: 2.211457
+  type: 'test'
+  ...
+# Subtest: FIFO: tiga nomor dipanggil dengan urutan yang sama
+ok 2 - FIFO: tiga nomor dipanggil dengan urutan yang sama
+  ---
+  duration_ms: 0.215446
+  type: 'test'
+  ...
+# Subtest: kasus uji minimal: ambil 3 lalu panggil 4, yang ke-4 kosong
+ok 3 - kasus uji minimal: ambil 3 lalu panggil 4, yang ke-4 kosong
+  ---
+  duration_ms: 0.187305
+  type: 'test'
+  ...
+# Subtest: riwayat panggilan dibatasi 5 nomor dan yang baru ditampilkan dulu
+ok 4 - riwayat panggilan dibatasi 5 nomor dan yang baru ditampilkan dulu
+  ---
+  duration_ms: 0.223117
+  type: 'test'
+  ...
+# Subtest: reset saat antrean berisi pasien mengosongkan semua state
+ok 5 - reset saat antrean berisi pasien mengosongkan semua state
+  ---
+  duration_ms: 0.16343
+  type: 'test'
+  ...
+# Subtest: nomor A1000 tetap benar setelah nomor melewati 999
+ok 6 - nomor A1000 tetap benar setelah nomor melewati 999
+  ---
+  duration_ms: 0.384375
+  type: 'test'
+  ...
+# Subtest: snapshot getStatus tidak dapat mengubah data antrean asli
+ok 7 - snapshot getStatus tidak dapat mengubah data antrean asli
+  ---
+  duration_ms: 0.171933
+  type: 'test'
+  ...
+# Subtest: editor awal kosong, tombol undo dan redo seharusnya nonaktif
+ok 8 - editor awal kosong, tombol undo dan redo seharusnya nonaktif
+  ---
+  duration_ms: 2.137589
+  type: 'test'
+  ...
+# Subtest: ketik tiga kali lalu undo tiga kali kembali ke kosong
+ok 9 - ketik tiga kali lalu undo tiga kali kembali ke kosong
+  ---
+  duration_ms: 0.331396
+  type: 'test'
+  ...
+# Subtest: redo dua kali setelah undo tiga kali
+ok 10 - redo dua kali setelah undo tiga kali
+  ---
+  duration_ms: 0.227895
+  type: 'test'
+  ...
+# Subtest: ketik setelah undo harus menghapus redo
+ok 11 - ketik setelah undo harus menghapus redo
+  ---
+  duration_ms: 0.232051
+  type: 'test'
+  ...
+# Subtest: mengetik teks identik tidak menambah riwayat
+ok 12 - mengetik teks identik tidak menambah riwayat
+  ---
+  duration_ms: 0.131162
+  type: 'test'
+  ...
+# Subtest: maksimum riwayat adalah 50 langkah
+ok 13 - maksimum riwayat adalah 50 langkah
+  ---
+  duration_ms: 0.200524
+  type: 'test'
+  ...
+# Subtest: editor dapat dimulai dari teks localStorage tanpa langkah undo
+ok 14 - editor dapat dimulai dari teks localStorage tanpa langkah undo
+  ---
+  duration_ms: 0.144732
+  type: 'test'
+  ...
+# Subtest: input non-string ditolak, state lama tetap utuh
+ok 15 - input non-string ditolak, state lama tetap utuh
+  ---
+  duration_ms: 0.371195
+  type: 'test'
+  ...
+# Subtest: input catatan terlalu panjang ditolak
+ok 16 - input catatan terlalu panjang ditolak
+  ---
+  duration_ms: 0.402451
+  type: 'test'
+  ...
+# Subtest: teks saat ini dapat dihapus dan di-undo
+ok 17 - teks saat ini dapat dihapus dan di-undo
+  ---
+  duration_ms: 0.430832
+  type: 'test'
+  ...
+# Subtest: Stack kosong mengembalikan undefined saat pop dan peek
+ok 18 - Stack kosong mengembalikan undefined saat pop dan peek
+  ---
+  duration_ms: 1.675721
+  type: 'test'
+  ...
+# Subtest: Stack LIFO: data terakhir keluar lebih dahulu
+ok 19 - Stack LIFO: data terakhir keluar lebih dahulu
+  ---
+  duration_ms: 0.595684
+  type: 'test'
+  ...
+# Subtest: Stack dengan batas 2 menghapus nilai paling lama
+ok 20 - Stack dengan batas 2 menghapus nilai paling lama
+  ---
+  duration_ms: 0.133957
+  type: 'test'
+  ...
+# Subtest: Stack menolak batas kapasitas tidak valid
+ok 21 - Stack menolak batas kapasitas tidak valid
+  ---
+  duration_ms: 0.398065
+  type: 'test'
+  ...
+# Subtest: Stack clear mengosongkan semua nilai
+ok 22 - Stack clear mengosongkan semua nilai
+  ---
+  duration_ms: 0.17708
+  type: 'test'
+  ...
+# Subtest: LinkedList: addFirst, addLast dan toArray
+ok 23 - LinkedList: addFirst, addLast dan toArray
+  ---
+  duration_ms: 0.19101
+  type: 'test'
+  ...
+# Subtest: LinkedList: removeFirst menangani kosong dan satu elemen
+ok 24 - LinkedList: removeFirst menangani kosong dan satu elemen
+  ---
+  duration_ms: 0.249547
+  type: 'test'
+  ...
+# Subtest: LinkedList: find/peekFirst dan nilai tidak ditemukan
+ok 25 - LinkedList: find/peekFirst dan nilai tidak ditemukan
+  ---
+  duration_ms: 0.168408
+  type: 'test'
+  ...
+# Subtest: LinkedList: clear mengosongkan seluruh node
+ok 26 - LinkedList: clear mengosongkan seluruh node
+  ---
+  duration_ms: 0.498452
+  type: 'test'
+  ...
+# Subtest: LinkedQueue menjaga urutan FIFO
+ok 27 - LinkedQueue menjaga urutan FIFO
+  ---
+  duration_ms: 0.357815
+  type: 'test'
+  ...
+# Subtest: LinkedQueue: dequeue ketika kosong tidak melempar error
+ok 28 - LinkedQueue: dequeue ketika kosong tidak melempar error
+  ---
+  duration_ms: 0.144562
+  type: 'test'
+  ...
+# Subtest: LinkedQueue: clear dan pemakaian kembali
+ok 29 - LinkedQueue: clear dan pemakaian kembali
+  ---
+  duration_ms: 0.093938
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 69.771352

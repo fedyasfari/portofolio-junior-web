@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 1 - Linked List</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f3f6fb; color: #17243b; margin: 0; padding: 32px 16px; }
+    main { max-width: 850px; margin: auto; padding: 24px; background: white; border-radius: 14px; box-shadow: 0 5px 24px #12254c13; }
+    h1 { margin-top: 0; } p { line-height: 1.6; }
+    .tombol { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+    button { background: #215ed5; color: white; border: 0; border-radius: 8px; padding: 12px 18px; font-size: 15px; cursor: pointer; }
+    button:hover { background: #1848a5; }
+    #tombol-benchmark { background: #155b48; }
+    pre { background: #101b31; color: #e7f2f1; padding: 18px; border-radius: 8px; overflow-x: auto; min-height: 150px; line-height: 1.6; white-space: pre-wrap; }
+    code { background: #e9eef8; padding: 2px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Lab 1 - Linked List</h1>
+    <p>Klik <strong>Jalankan Pengujian</strong> terlebih dahulu untuk memeriksa semua operasi LinkedList. Setelah lulus, klik <strong>Benchmark 100.000 Elemen</strong> untuk membandingkan <code>shift()</code> dengan <code>LinkedQueue</code>.</p>
+    <div class="tombol">
+      <button id="tombol-uji">Jalankan Pengujian</button>
+      <button id="tombol-benchmark">Benchmark 100.000 Elemen</button>
+    </div>
+    <h2>Hasil</h2>
+    <pre id="hasil">Belum ada hasil. Silakan jalankan pengujian.</pre>
+    <p>Untuk melihat <code>console.time</code> dan <code>console.table</code>, buka Developer Tools (F12) → tab <strong>Console</strong>.</p>
+  </main>
+  <script type="module" src="./lab1.js"></script>
+</body>
+</html>

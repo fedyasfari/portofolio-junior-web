@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Proyek 3: simulator antrean klinik dan editor catatan dengan Undo/Redo." />
+  <title>Simulasi Antrean Klinik & Riwayat — Proyek 3</title>
+  <style>
+:root {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  color: #203146;
+  background: #f4f7f9;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, textarea { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, textarea:focus-visible { outline: 3px solid #86b2fa; outline-offset: 2px; }
+.app-shell { max-width: 1220px; padding: 0 28px; margin: auto; }
+.kepala { height: 88px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e1e7ef; }
+.identitas { display: flex; align-items: center; gap: 12px; color: #294055; letter-spacing: .065em; font-size: 14px; }
+.logo { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 11px; background: #157d75; color: white; font-size: 29px; font-weight: 700; line-height: 1; }
+.chip { background: #e8f0ef; color: #287c71; padding: 8px 12px; border-radius: 40px; font-size: 11px; letter-spacing: .08em; font-weight: 800; }
+.judul-halaman { padding: 39px 0 26px; }
+.overline { color: #13877d; font-weight: 800; font-size: 11px; letter-spacing: .18em; margin: 0 0 9px; }
+h1 { margin: 0 0 9px; color: #193149; font-size: clamp(26px, 3.3vw, 36px); letter-spacing: -.045em; }
+.judul-halaman > p:last-child { color: #718092; margin: 0; font-size: 14px; line-height: 1.5; }
+.kolom { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.kartu { background: white; padding: 27px; border: 1px solid #e2eaf0; border-radius: 18px; box-shadow: 0 8px 24px rgba(27,58,85,.045); }
+.bagian-judul { display: flex; align-items: center; gap: 13px; padding-bottom: 21px; }
+.bagian-judul h2 { margin: 0; font-size: 20px; color: #203146; letter-spacing: -.025em; }
+.bagian-judul p { margin: 4px 0 0; font-size: 12px; color: #8a96a6; }
+.nomor-bagian { display: grid; place-items: center; width: 40px; height: 40px; flex: none; color: #157d75; background: #e6f6f3; border-radius: 12px; font-weight: 800; font-size: 14px; }
+.nomor-ungu { background: #f1ecfc; color: #7856bb; }
+.papan-panggilan { display: flex; min-height: 214px; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-radius: 14px; background: linear-gradient(126deg,#125e60,#138477); color: white; }
+.label-papan { font-size: 11px; font-weight: 800; letter-spacing: .16em; color: #c4e5dc; margin: 0; }
+.papan-panggilan strong { font-size: 67px; font-weight: 750; letter-spacing: .03em; line-height: 1.5; }
+.penanda-papan { border: 1px solid #ffffff45; padding: 6px 13px; border-radius: 40px; font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.dot { display: inline-block; vertical-align: middle; margin-right: 5px; width: 6px; height: 6px; border-radius: 50%; background: #9df2c8; }
+.statistik { display: flex; justify-content: space-between; align-items: center; padding: 19px 3px; border-bottom: 1px solid #edf0f4; }
+.statistik > div { display: flex; align-items: center; gap: 12px; }
+.statistik span { color: #788696; font-size: 13px; }
+.statistik strong { color: #133e3c; background: #dff4ed; min-width: 30px; text-align: center; padding: 4px 8px; border-radius: 7px; }
+.statistik .status-hijau { color: #16956d; font-size: 11px; }
+.aksi { display: grid; grid-template-columns: 1fr 1.1fr; gap: 10px; margin-top: 19px; }
+.btn { border: 1px solid transparent; border-radius: 9px; padding: 13px 12px; font-weight: 700; font-size: 13px; }
+.btn-primer { background: #148477; color: white; }
+.btn-gelap { background: #1e364c; color: white; }
+.btn:hover:not(:disabled) { filter: brightness(1.08); }
+.btn-sekunder { color: #314a62; background: #f9fbfd; border: 1px solid #dde5ed; }
+.btn-sekunder:disabled { cursor: not-allowed; background: #f5f7f9; color: #abb6c1; }
+.pesan { font-size: 12px; line-height: 1.5; color: #718092; min-height: 22px; margin: 12px 0; }
+.pesan[data-tipe='sukses'] { color: #13806c; }
+.pesan[data-tipe='peringatan'] { color: #b15f21; }
+.daftar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 11px; }
+h3 { font-size: 13px; margin: 0 0 11px; color: #405266; }
+.daftar { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 7px; min-height: 79px; align-content: flex-start; }
+.nomor-item { padding: 8px 11px; background: #e9f7f3; border: 1px solid #d5ebe4; border-radius: 8px; color: #167c6f; font-weight: 800; font-size: 13px; }
+#riwayat-panggilan .nomor-item { background: #f2f4f8; border-color: #e5eaf0; color: #657b90; }
+.item-kosong { color: #9aa8b8; font-size: 12px; font-style: italic; line-height: 1.5; }
+.bawah-kartu { display: flex; gap: 12px; justify-content: space-between; align-items: center; border-top: 1px solid #edf0f4; padding-top: 17px; margin-top: 13px; }
+.bawah-kartu span { color: #9aa6b1; font-size: 11px; }
+.btn-link { border: 0; background: none; color: #aa5151; font-size: 12px; font-weight: 750; padding: 5px 0; }
+.editor-toolbar { display: flex; gap: 10px; border-bottom: 1px solid #edf0f4; padding-bottom: 18px; margin-bottom: 21px; }
+.editor-toolbar .btn { padding: 10px 23px; }
+.label-input { font-weight: 800; font-size: 10px; letter-spacing: .12em; color: #65778b; display: block; margin-bottom: 10px; }
+textarea { display: block; width: 100%; min-height: 286px; border: 1px solid #dce5ee; border-radius: 11px; resize: vertical; padding: 16px; font-size: 14px; color: #2d4356; line-height: 1.7; background: #fcfdff; }
+textarea::placeholder { color: #a2adbc; }
+.indikator-karakter { display: flex; justify-content: space-between; gap: 10px; padding-top: 10px; color: #9ca9b7; font-size: 10px; }
+.kartu-riwayat { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid #edf0f4; border-radius: 11px; padding: 17px 8px; margin-top: 25px; text-align: center; background: #fbfcfe; }
+.kartu-riwayat > div { display: flex; flex-direction: column; gap: 5px; }
+.kartu-riwayat > div + div { border-left: 1px solid #e8edf2; }
+.kartu-riwayat span { color: #8795a3; font-size: 11px; }
+.kartu-riwayat strong { font-size: 23px; color: #294159; }
+.info-persist { display: flex; gap: 8px; align-items: center; padding-top: 18px; font-size: 11px; color: #7e97a4; }
+.info-persist > span:first-child { color: #159477; font-size: 13px; }
+footer { text-align: center; padding: 33px 0; color: #a2acb9; font-size: 11px; }
+@media (max-width: 920px) { .kolom { grid-template-columns: 1fr; } }
+@media (max-width: 580px) { .app-shell { padding: 0 14px; } .kepala { height: 73px; } .chip { font-size: 8px; padding: 7px 9px; } .kartu { padding: 20px; } .aksi { grid-template-columns: 1fr; } .bawah-kartu { align-items: start; } .indikator-karakter { flex-wrap: wrap; } }
+
+</style>
+  
+</head>
+<body>
+  <div class="app-shell">
+    <header class="kepala">
+      <div class="identitas"><span class="logo" aria-hidden="true">+</span><span>KLINIK <strong>ANTRI</strong></span></div>
+      <span class="chip">PBL HARI 7 · PROYEK 3</span>
+    </header>
+    <main>
+      <div class="judul-halaman">
+        <p class="overline">SIMULATOR SISTEM</p>
+        <h1>Antrean &amp; Riwayat Catatan</h1>
+        <p>Simulasi pelayanan loket pasien dan editor catatan dengan dua Stack untuk Undo/Redo.</p>
+      </div>
+
+      <div class="kolom">
+        <section class="kartu" aria-labelledby="judul-antrian">
+          <div class="bagian-judul"><span class="nomor-bagian">01</span><div><h2 id="judul-antrian">Antrean Loket</h2><p>First In, First Out · LinkedQueue</p></div></div>
+          <div class="papan-panggilan">
+            <p class="label-papan">NOMOR SEDANG DIPANGGIL</p>
+            <strong id="nomor-dipanggil" aria-live="polite">—</strong>
+            <span class="penanda-papan"><span class="dot"></span> LOKET UTAMA</span>
+          </div>
+          <div class="statistik"><div><span>Pasien menunggu</span><strong id="jumlah-menunggu" aria-live="polite">0</strong></div><span class="status-hijau">● Sistem aktif</span></div>
+          <div class="aksi">
+            <button id="tombol-ambil" type="button" class="btn btn-primer">+ Ambil Nomor</button>
+            <button id="tombol-panggil" type="button" class="btn btn-gelap">Panggil Berikutnya →</button>
+          </div>
+          <p id="pesan-antrean" class="pesan" role="status" aria-live="polite">Klik “Ambil Nomor” untuk mulai mengantre.</p>
+          <div class="daftar-grid">
+            <div><h3>Daftar Menunggu</h3><ol id="daftar-menunggu" class="daftar nomor-list"></ol></div>
+            <div><h3>5 Panggilan Terakhir</h3><ol id="riwayat-panggilan" class="daftar nomor-list"></ol></div>
+          </div>
+          <div class="bawah-kartu"><span>Reset mengulang nomor dari A001</span><button id="tombol-reset" type="button" class="btn-link">Reset antrean</button></div>
+        </section>
+
+        <section class="kartu" aria-labelledby="judul-editor">
+          <div class="bagian-judul"><span class="nomor-bagian nomor-ungu">02</span><div><h2 id="judul-editor">Editor Catatan</h2><p>Last In, First Out · 2 Stack</p></div></div>
+          <div class="editor-toolbar">
+            <button id="tombol-undo" type="button" class="btn btn-sekunder" disabled>↶ Undo</button>
+            <button id="tombol-redo" type="button" class="btn btn-sekunder" disabled>↷ Redo</button>
+          </div>
+          <label class="label-input" for="catatan">CATATAN PELAYANAN</label>
+          <textarea id="catatan" placeholder="Tulis catatan pelayanan, misalnya: Pasien datang pukul 09.00..." rows="11" maxlength="10000" spellcheck="true"></textarea>
+          <div class="indikator-karakter"><span>Perubahan terakhir dapat dibatalkan atau diulang.</span><span><span id="jumlah-karakter">0</span>/<span id="maks-karakter">10000</span> karakter</span></div>
+          <p id="pesan-editor" class="pesan" role="status" aria-live="polite">Mulai mengetik untuk mengaktifkan Undo.</p>
+          <div class="kartu-riwayat"><div><span>Langkah Undo</span><strong id="jumlah-undo">0</strong></div><div><span>Langkah Redo</span><strong id="jumlah-redo">0</strong></div><div><span>Batas riwayat</span><strong id="maks-riwayat">50</strong></div></div>
+          <div class="info-persist"><span aria-hidden="true">◉</span><span id="info-simpan">Catatan disimpan otomatis di browser ini setelah diedit.</span></div>
+        </section>
+      </div>
+      <footer>Proyek 3 · Struktur data murni JS · State antrean hanya tersimpan selama halaman terbuka</footer>
+    </main>
+  </div>
+<script>
+/**
+ * Struktur data murni tanpa DOM dan browser.
+ * Stack: LIFO; LinkedQueue: FIFO; LinkedList: penyimpanan node terhubung.
+ */
+
+/** Stack berbasis array, dengan pilihan batas kapasitas. */
+class Stack {
+  #data = [];
+  #maksimum;
+
+  constructor(maksimum = Infinity) {
+    if (maksimum !== Infinity && (!Number.isInteger(maksimum) || maksimum < 1)) {
+      throw new RangeError('Batas Stack harus bilangan bulat positif.');
+    }
+    this.#maksimum = maksimum;
+  }
+
+  push(nilai) {
+    if (this.#data.length >= this.#maksimum) this.#data.shift();
+    this.#data.push(nilai);
+  }
+
+  pop() {
+    return this.#data.pop();
+  }
+
+  peek() {
+    return this.#data.at(-1);
+  }
+
+  clear() {
+    this.#data.length = 0;
+  }
+
+  isEmpty() {
+    return this.#data.length === 0;
+  }
+
+  get size() {
+    return this.#data.length;
+  }
+}
+
+/** Node hanya digunakan di dalam implementasi LinkedList. */
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+/** Singly Linked List dengan pointer head dan tail. */
+class LinkedList {
+  #head = null;
+  #tail = null;
+  #panjang = 0;
+
+  addFirst(data) {
+    const node = new Node(data);
+    node.next = this.#head;
+    this.#head = node;
+    if (this.#tail === null) this.#tail = node;
+    this.#panjang++;
+  }
+
+  addLast(data) {
+    const node = new Node(data);
+    if (this.#tail === null) this.#head = node;
+    else this.#tail.next = node;
+    this.#tail = node;
+    this.#panjang++;
+  }
+
+  removeFirst() {
+    if (this.#head === null) return undefined;
+    const data = this.#head.data;
+    this.#head = this.#head.next;
+    if (this.#head === null) this.#tail = null;
+    this.#panjang--;
+    return data;
+  }
+
+  peekFirst() {
+    return this.#head?.data;
+  }
+
+  find(data) {
+    let node = this.#head;
+    while (node !== null) {
+      if (Object.is(node.data, data)) return node.data;
+      node = node.next;
+    }
+    return undefined;
+  }
+
+  toArray() {
+    const hasil = [];
+    let node = this.#head;
+    while (node !== null) {
+      hasil.push(node.data);
+      node = node.next;
+    }
+    return hasil;
+  }
+
+  clear() {
+    this.#head = null;
+    this.#tail = null;
+    this.#panjang = 0;
+  }
+
+  isEmpty() {
+    return this.#panjang === 0;
+  }
+
+  get size() {
+    return this.#panjang;
+  }
+}
+
+/** FIFO: enqueue/addLast dan dequeue/removeFirst keduanya O(1). */
+class LinkedQueue {
+  #list = new LinkedList();
+
+  enqueue(data) {
+    this.#list.addLast(data);
+  }
+
+  dequeue() {
+    return this.#list.removeFirst();
+  }
+
+  peek() {
+    return this.#list.peekFirst();
+  }
+
+  toArray() {
+    return this.#list.toArray();
+  }
+
+  clear() {
+    this.#list.clear();
+  }
+
+  isEmpty() {
+    return this.#list.isEmpty();
+  }
+
+  get size() {
+    return this.#list.size;
+  }
+}
+
+const AWALAN_NOMOR = 'A';
+const NOMOR_AWAL = 1;
+const DIGIT_NOMOR = 3;
+const MAKS_RIWAYAT_PANGGILAN = 5;
+
+/** Logika antrean klinik, terpisah dari DOM/UI. */
+class SistemAntrean {
+  #antrean = new LinkedQueue();
+  #nomorBerikutnya = NOMOR_AWAL;
+  #sedangDipanggil = null;
+  #riwayat = [];
+
+  /** Mengambil tiket baru dan menaruhnya pada akhir antrean. */
+  ambilNomor() {
+    const angka = String(this.#nomorBerikutnya).padStart(DIGIT_NOMOR, '0');
+    const nomor = `${AWALAN_NOMOR}${angka}`;
+    this.#antrean.enqueue(nomor);
+    this.#nomorBerikutnya++;
+    return nomor;
+  }
+
+  /** Memanggil nomor antrean terdepan (FIFO). */
+  panggilBerikutnya() {
+    const nomor = this.#antrean.dequeue();
+    if (nomor === undefined) {
+      return { berhasil: false, pesan: 'Antrean kosong. Ambil nomor terlebih dahulu.' };
+    }
+    this.#sedangDipanggil = nomor;
+    this.#riwayat.unshift(nomor);
+    if (this.#riwayat.length > MAKS_RIWAYAT_PANGGILAN) this.#riwayat.pop();
+    return { berhasil: true, nomor, pesan: `Nomor ${nomor}, silakan ke loket.` };
+  }
+
+  /** Mengembalikan salinan data agar state internal tetap aman. */
+  getStatus() {
+    return {
+      sedangDipanggil: this.#sedangDipanggil,
+      jumlahMenunggu: this.#antrean.size,
+      daftarMenunggu: this.#antrean.toArray(),
+      riwayatPanggilan: [...this.#riwayat],
+    };
+  }
+
+  /** Reset menghapus antrean, riwayat, panggilan aktif, dan nomor berikutnya. */
+  reset() {
+    this.#antrean.clear();
+    this.#riwayat = [];
+    this.#sedangDipanggil = null;
+    this.#nomorBerikutnya = NOMOR_AWAL;
+  }
+}
+
+const MAKS_RIWAYAT = 50;
+const MAKS_KARAKTER = 10_000;
+
+function periksaTeks(teks) {
+  if (typeof teks !== 'string') throw new TypeError('Catatan harus berupa teks.');
+  if (teks.length > MAKS_KARAKTER) {
+    throw new RangeError(`Catatan maksimal ${MAKS_KARAKTER} karakter.`);
+  }
+}
+
+/** Editor riwayat berbasis dua Stack, independen dari DOM. */
+class EditorRiwayat {
+  #undo = new Stack(MAKS_RIWAYAT);
+  #redo = new Stack(MAKS_RIWAYAT);
+  #teks = '';
+
+  constructor(teksAwal = '') {
+    periksaTeks(teksAwal);
+    this.#teks = teksAwal;
+  }
+
+  /** Satu perubahan teks = satu langkah undo; ketik baru menghapus redo. */
+  ketik(teksBaru) {
+    periksaTeks(teksBaru);
+    if (teksBaru === this.#teks) return false;
+    this.#undo.push(this.#teks);
+    this.#teks = teksBaru;
+    this.#redo.clear();
+    return true;
+  }
+
+  undo() {
+    if (this.#undo.isEmpty()) return false;
+    this.#redo.push(this.#teks);
+    this.#teks = this.#undo.pop();
+    return true;
+  }
+
+  redo() {
+    if (this.#redo.isEmpty()) return false;
+    this.#undo.push(this.#teks);
+    this.#teks = this.#redo.pop();
+    return true;
+  }
+
+  getStatus() {
+    return {
+      teks: this.#teks,
+      jumlahUndo: this.#undo.size,
+      jumlahRedo: this.#redo.size,
+      bisaUndo: !this.#undo.isEmpty(),
+      bisaRedo: !this.#redo.isEmpty(),
+    };
+  }
+}
+
+const KUNCI_CATATAN = 'pbl-hari7-catatan-v1';
+const elemen = (id) => document.getElementById(id);
+const sistem = new SistemAntrean();
+
+/** Membaca teks tersimpan; jika localStorage diblokir, lanjut tanpa penyimpanan. */
+function muatCatatan() {
+  try {
+    const teks = localStorage.getItem(KUNCI_CATATAN) ?? '';
+    return teks.length <= MAKS_KARAKTER ? teks : '';
+  } catch {
+    return '';
+  }
+}
+
+const editor = new EditorRiwayat(muatCatatan());
+
+function simpanCatatan() {
+  try {
+    localStorage.setItem(KUNCI_CATATAN, editor.getStatus().teks);
+    elemen('info-simpan').textContent = 'Catatan tersimpan otomatis di browser ini.';
+  } catch {
+    elemen('info-simpan').textContent = 'Penyimpanan browser tidak tersedia; catatan masih ada selama tab terbuka.';
+  }
+}
+
+function beriPesan(id, pesan, tipe = 'info') {
+  const target = elemen(id);
+  target.textContent = pesan;
+  target.dataset.tipe = tipe;
+}
+
+function isiDaftar(id, item, teksKosong) {
+  const wadah = elemen(id);
+  wadah.replaceChildren();
+  if (item.length === 0) {
+    const kosong = document.createElement('li');
+    kosong.className = 'item-kosong';
+    kosong.textContent = teksKosong;
+    wadah.append(kosong);
+    return;
+  }
+  item.forEach((nomor, indeks) => {
+    const baris = document.createElement('li');
+    baris.className = 'nomor-item';
+    baris.textContent = nomor;
+    baris.setAttribute('aria-label', `Urutan ${indeks + 1}: ${nomor}`);
+    wadah.append(baris);
+  });
+}
+
+function renderAntrean() {
+  const status = sistem.getStatus();
+  elemen('nomor-dipanggil').textContent = status.sedangDipanggil ?? '—';
+  elemen('jumlah-menunggu').textContent = String(status.jumlahMenunggu);
+  isiDaftar('daftar-menunggu', status.daftarMenunggu, 'Belum ada pasien menunggu.');
+  isiDaftar('riwayat-panggilan', status.riwayatPanggilan, 'Belum ada nomor dipanggil.');
+}
+
+function renderEditor() {
+  const status = editor.getStatus();
+  if (elemen('catatan').value !== status.teks) elemen('catatan').value = status.teks;
+  elemen('tombol-undo').disabled = !status.bisaUndo;
+  elemen('tombol-redo').disabled = !status.bisaRedo;
+  elemen('jumlah-undo').textContent = String(status.jumlahUndo);
+  elemen('jumlah-redo').textContent = String(status.jumlahRedo);
+  elemen('jumlah-karakter').textContent = String(status.teks.length);
+  elemen('maks-riwayat').textContent = String(MAKS_RIWAYAT);
+  elemen('maks-karakter').textContent = String(MAKS_KARAKTER);
+}
+
+function ambilNomor() {
+  const nomor = sistem.ambilNomor();
+  renderAntrean();
+  beriPesan('pesan-antrean', `${nomor} berhasil diambil dan masuk antrean.`, 'sukses');
+}
+
+function panggilNomor() {
+  const hasil = sistem.panggilBerikutnya();
+  renderAntrean();
+  beriPesan('pesan-antrean', hasil.pesan, hasil.berhasil ? 'sukses' : 'peringatan');
+}
+
+function resetAntrean() {
+  const disetujui = window.confirm('Reset semua nomor, panggilan, dan riwayat antrean?');
+  if (!disetujui) return;
+  sistem.reset();
+  renderAntrean();
+  beriPesan('pesan-antrean', 'Antrean berhasil direset. Nomor berikutnya kembali A001.', 'sukses');
+}
+
+function ketikCatatan() {
+  try {
+    editor.ketik(elemen('catatan').value);
+    renderEditor();
+    simpanCatatan();
+    beriPesan('pesan-editor', 'Catatan diperbarui.', 'sukses');
+  } catch (error) {
+    renderEditor();
+    beriPesan('pesan-editor', error.message, 'peringatan');
+  }
+}
+
+function ubahRiwayat(jenis) {
+  const berhasil = jenis === 'undo' ? editor.undo() : editor.redo();
+  renderEditor();
+  if (berhasil) simpanCatatan();
+  beriPesan('pesan-editor', berhasil ? `${jenis.toUpperCase()} berhasil.` : `Tidak ada langkah ${jenis}.`, berhasil ? 'sukses' : 'peringatan');
+  elemen('catatan').focus();
+}
+
+function mulai() {
+  elemen('tombol-ambil').addEventListener('click', ambilNomor);
+  elemen('tombol-panggil').addEventListener('click', panggilNomor);
+  elemen('tombol-reset').addEventListener('click', resetAntrean);
+  elemen('catatan').addEventListener('input', ketikCatatan);
+  elemen('tombol-undo').addEventListener('click', () => ubahRiwayat('undo'));
+  elemen('tombol-redo').addEventListener('click', () => ubahRiwayat('redo'));
+  renderAntrean();
+  renderEditor();
+}
+
+mulai();
+
+</script>
+</body>
+</html>

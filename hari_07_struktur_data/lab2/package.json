@@ -1,0 +1,10 @@
+{
+  "name": "hari-07-lab2-tree-graph",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node lab2.js",
+    "test": "node --test test-lab2.js"
+  }
+}

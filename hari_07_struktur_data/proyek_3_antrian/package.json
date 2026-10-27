@@ -1,0 +1,19 @@
+{
+  "name": "proyek-3-antrian",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PBL Hari 7 - Simulator Antrean Klinik dan Editor Riwayat",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "lint": "eslint .",
+    "format": "prettier --write \"**/*.{js,html,css,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,html,css,json,md}\"",
+    "build:demo": "node scripts/buat-standalone.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
+  }
+}

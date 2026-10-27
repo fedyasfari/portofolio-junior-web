@@ -1,0 +1,12 @@
+:root { font-family: Arial, sans-serif; color: #0f172a; background: #f1f5f9; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 2rem 1rem; }
+.wadah { max-width: 500px; margin: auto; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 24px #00000010; }
+a { color: #1d4ed8; }
+form { display: grid; gap: .3rem; }
+label { font-weight: bold; margin-top: .8rem; }
+input { display: block; width: 100%; margin-top: .4rem; padding: .7rem; border: 1px solid #94a3b8; border-radius: 6px; }
+input[aria-invalid='true'] { border-color: #b91c1c; }
+small { color: #b91c1c; min-height: 1.2rem; }
+button { margin-top: 1rem; padding: .8rem; background: #2563eb; border: 0; border-radius: 8px; color: white; cursor: pointer; }
+#ringkasan { font-weight: bold; }

@@ -1,0 +1,5 @@
+// CONTOH KODE SEBELUM - SIMULASI; BUKAN BERKAS ASLI PROYEK 2 PENGGUNA
+import { hitung } from './operasi.js';
+var layar=document.querySelector('#layar');var angka=5;
+function contoh(){var hasil=hitung(angka,'+',2); layar.textContent=hasil}
+window.addEventListener('load',contoh);

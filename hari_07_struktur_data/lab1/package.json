@@ -1,0 +1,10 @@
+{
+  "name": "hari-07-struktur-data",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node -e \"import('./lab1.js').then(m => m.jalankanPengujian())\"",
+    "benchmark": "node -e \"import('./lab1.js').then(m => m.jalankanBenchmark())\""
+  }
+}

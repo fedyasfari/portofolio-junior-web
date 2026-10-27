@@ -1,0 +1,11 @@
+No,Pelanggaran,Prinsip,Perbaikan
+1,"Nama d f g r h k tidak bermakna",Penamaan,"Gunakan nama daftarNilai hitungRataRata tentukanGrade dan hitungHargaDenganPajak"
+2,"Menggunakan var",Guideline modern,"Gunakan const dan let sesuai kebutuhan"
+3,"Format padat tanpa spasi dan indentasi",Format,"Format konsisten dengan Prettier"
+4,"Perbandingan == pada r == 80",Perbandingan aman,"Gunakan ==="
+5,"Angka ajaib 85 70 55 0.11 80",Magic number,"Gunakan PAJAK BATAS_GRADE NILAI_PUJIAN"
+6,"Fungsi h dan k identik",DRY,"Satukan dalam hitungHargaDenganPajak"
+7,"if bersarang dalam g",KISS / guard clause,"Gunakan return awal berurutan"
+8,"Array kosong menghasilkan NaN",Error handling,"Periksa array kosong dan return 0"
+9,"Titik koma tidak konsisten",Konsistensi,"Gunakan titik koma konsisten atau formatter"
+10,"Tidak ada komentar atau JSDoc",Dokumentasi,"Tambahkan JSDoc singkat"

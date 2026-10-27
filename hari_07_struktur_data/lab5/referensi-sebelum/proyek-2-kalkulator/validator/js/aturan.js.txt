@@ -1,0 +1,5 @@
+// CONTOH KODE SEBELUM - SIMULASI; BUKAN BERKAS ASLI PROYEK 2 PENGGUNA
+export function validasiNama(v){if(v.length==0)return 'Kosong';var hasil='';return hasil}
+export function validasiEmail(v){var regex=/^[^@]+@[^@]+\.[^@]+$/;return regex.test(v)?'':'Email salah'}
+export function validasiSandi(v){return v.length>=8?'':'Sandi terlalu pendek'}
+export function validasiKonfirmasi(v,k){return v==k?'':'Tidak sama'}

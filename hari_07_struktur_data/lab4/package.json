@@ -1,0 +1,12 @@
+{
+  "name": "lab4-code-review-refactor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Lab 4 Code Review dan Refactor - Hari 07",
+  "scripts": {
+    "start": "node program.js",
+    "test": "node --test test.js",
+    "asli": "node kode-buruk.js"
+  }
+}

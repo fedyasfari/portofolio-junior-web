@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validator - Proyek 2</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="wadah">
+      <h1>Form Validator</h1>
+      <p><a href="../kalkulator/index.html">← Ke Kalkulator</a></p>
+      <form id="form-daftar" novalidate>
+        <label>Nama <input id="nama" name="nama" autocomplete="name" /></label>
+        <small id="error-nama"></small>
+        <label>Email <input id="email" name="email" type="email" autocomplete="email" /></label>
+        <small id="error-email"></small>
+        <label>Kata sandi <input id="sandi" name="sandi" type="password" autocomplete="new-password" /></label>
+        <small id="error-sandi"></small>
+        <label>Konfirmasi sandi <input id="konfirmasi" name="konfirmasi" type="password" autocomplete="new-password" /></label>
+        <small id="error-konfirmasi"></small>
+        <button type="submit">Periksa Formulir</button>
+      </form>
+      <p id="ringkasan" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

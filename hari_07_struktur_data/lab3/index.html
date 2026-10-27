@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 3 — Pencarian dan Pengurutan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <span class="eyebrow">HARI 7 · STRUKTUR DATA DAN ALGORITMA</span>
+      <h1>Lab 3 — Pencarian dan Pengurutan</h1>
+      <p>Uji langsung pencarian linear, pencarian biner, Bubble Sort, Merge Sort, dan Insertion Sort.</p>
+    </header>
+
+    <section class="panel">
+      <h2>1. Masukkan data Anda</h2>
+      <label for="masukan">Angka dipisahkan dengan koma</label>
+      <input id="masukan" value="8, 3, 5, 1, 5" autocomplete="off" spellcheck="false">
+      <p class="help">Contoh: <code>8, 3, 5, 1, 5</code>. Kosongkan kolom untuk mencoba array kosong.</p>
+      <div class="actions">
+        <button type="button" id="urutkan">Jalankan seluruh sort</button>
+        <button type="button" id="contohKosong" class="secondary">Array kosong</button>
+        <button type="button" id="contohDuplikat" class="secondary">Array duplikat</button>
+      </div>
+      <p id="pesan" role="status" aria-live="polite"></p>
+      <div class="result" id="hasilSort"></div>
+    </section>
+
+    <section class="panel">
+      <h2>2. Cari angka</h2>
+      <p class="help">Pencarian biner otomatis menggunakan versi data yang telah diurutkan menaik.</p>
+      <div class="inline-input">
+        <div><label for="target">Angka dicari</label><input id="target" type="number" value="5"></div>
+        <button type="button" id="cari">Cari dengan dua metode</button>
+      </div>
+      <div class="result" id="hasilCari"></div>
+    </section>
+
+    <section class="panel">
+      <h2>3. Bandingkan penghitung perbandingan (1.000 elemen)</h2>
+      <p>Data acak, terurut, dan terbalik. Perhitungan hanya mencatat perbandingan nilai antar-elemen, bukan waktu.</p>
+      <button type="button" id="hitung">Jalankan perbandingan</button>
+      <div class="result" id="hasilHitung"></div>
+    </section>
+
+    <section class="panel note">
+      <h2>4. Benchmark 10.000 dan 100.000 elemen</h2>
+      <p>Jalankan benchmark besar lewat <strong>terminal VS Code</strong> agar browser tidak macet. Buka terminal pada folder ini lalu ketik:</p>
+      <pre><code>npm run benchmark</code></pre>
+      <p>Untuk mencoba 10.000 elemen dahulu: <code>npm run benchmark:cepat</code>.</p>
+      <p>Batas aman 15 detik per algoritma: jika Bubble Sort belum selesai, tabel menandainya secara jujur sebagai melampaui batas, bukan mengarang waktu. Untuk mencoba tanpa batas: <code>npm run benchmark:penuh</code> (bisa sangat lama). Hasil akan tersimpan otomatis dalam <code>hasil-benchmark.csv</code> dan <code>hasil-benchmark.md</code>.</p>
+    </section>
+    <footer>Lab 3 · Semua kode dapat dibaca dan dimodifikasi di VS Code.</footer>
+  </main>
+  <script type="module" src="browser.js"></script>
+</body>
+</html>

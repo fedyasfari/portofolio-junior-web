@@ -1,0 +1,14 @@
+{
+  "name": "hari-07-lab3-pencarian-pengurutan",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node contoh.js",
+    "test": "node --test test.js",
+    "perbandingan": "node perbandingan.js",
+    "benchmark": "node benchmark.js",
+    "benchmark:cepat": "node benchmark.js --cepat",
+    "benchmark:penuh": "node benchmark.js --tanpa-batas"
+  }
+}

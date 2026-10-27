@@ -1,0 +1,21 @@
+{
+  "name": "hari-07-lab5-eslint-prettier",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Praktikum lint dan format untuk Lab 4 dan contoh Proyek 2 Kalkulator dan Form Validator",
+  "scripts": {
+    "start": "node program.js",
+    "test": "node --test test/*.test.mjs",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "laporan:lint": "node skrip/hitung-lint.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.0.0",
+    "prettier": "^3.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+:root { font-family: Arial, sans-serif; color: #0f172a; background: #f1f5f9; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 2rem 1rem; }
+.wadah { max-width: 420px; margin: auto; background: white; padding: 1.5rem; border-radius: 16px; box-shadow: 0 6px 24px #00000010; }
+h1 { margin-top: 0; }
+a { color: #1d4ed8; }
+#layar { display: block; width: 100%; overflow-x: auto; white-space: nowrap; text-align: right; background: #0f172a; color: white; padding: 1rem; border-radius: 8px; font-size: 1.6rem; margin: 1rem 0; min-height: 65px; }
+.papan { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+button { font-size: 1.2rem; min-height: 55px; border: 1px solid #cbd5e1; background: #e2e8f0; border-radius: 8px; cursor: pointer; }
+button:hover { background: #cbd5e1; }
+h2 { font-size: 1rem; margin-top: 1.5rem; }
+#riwayat { overflow-wrap: anywhere; padding-left: 1.5rem; }

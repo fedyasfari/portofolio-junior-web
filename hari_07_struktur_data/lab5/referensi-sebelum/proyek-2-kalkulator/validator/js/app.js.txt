@@ -1,0 +1,5 @@
+// CONTOH KODE SEBELUM - SIMULASI; BUKAN BERKAS ASLI PROYEK 2 PENGGUNA
+import { validasiNama } from './aturan.js';
+var nama=document.querySelector('#nama');
+var form=document.querySelector('#form-daftar');
+form.addEventListener('submit',function(e){e.preventDefault();var pesan=validasiNama(nama.value);console.log(pesan)})

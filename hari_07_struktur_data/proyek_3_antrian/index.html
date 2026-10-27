@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Proyek 3: simulator antrean klinik dan editor catatan dengan Undo/Redo." />
+  <title>Simulasi Antrean Klinik & Riwayat — Proyek 3</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="kepala">
+      <div class="identitas"><span class="logo" aria-hidden="true">+</span><span>KLINIK <strong>ANTRI</strong></span></div>
+      <span class="chip">PBL HARI 7 · PROYEK 3</span>
+    </header>
+    <main>
+      <div class="judul-halaman">
+        <p class="overline">SIMULATOR SISTEM</p>
+        <h1>Antrean &amp; Riwayat Catatan</h1>
+        <p>Simulasi pelayanan loket pasien dan editor catatan dengan dua Stack untuk Undo/Redo.</p>
+      </div>
+
+      <div class="kolom">
+        <section class="kartu" aria-labelledby="judul-antrian">
+          <div class="bagian-judul"><span class="nomor-bagian">01</span><div><h2 id="judul-antrian">Antrean Loket</h2><p>First In, First Out · LinkedQueue</p></div></div>
+          <div class="papan-panggilan">
+            <p class="label-papan">NOMOR SEDANG DIPANGGIL</p>
+            <strong id="nomor-dipanggil" aria-live="polite">—</strong>
+            <span class="penanda-papan"><span class="dot"></span> LOKET UTAMA</span>
+          </div>
+          <div class="statistik"><div><span>Pasien menunggu</span><strong id="jumlah-menunggu" aria-live="polite">0</strong></div><span class="status-hijau">● Sistem aktif</span></div>
+          <div class="aksi">
+            <button id="tombol-ambil" type="button" class="btn btn-primer">+ Ambil Nomor</button>
+            <button id="tombol-panggil" type="button" class="btn btn-gelap">Panggil Berikutnya →</button>
+          </div>
+          <p id="pesan-antrean" class="pesan" role="status" aria-live="polite">Klik “Ambil Nomor” untuk mulai mengantre.</p>
+          <div class="daftar-grid">
+            <div><h3>Daftar Menunggu</h3><ol id="daftar-menunggu" class="daftar nomor-list"></ol></div>
+            <div><h3>5 Panggilan Terakhir</h3><ol id="riwayat-panggilan" class="daftar nomor-list"></ol></div>
+          </div>
+          <div class="bawah-kartu"><span>Reset mengulang nomor dari A001</span><button id="tombol-reset" type="button" class="btn-link">Reset antrean</button></div>
+        </section>
+
+        <section class="kartu" aria-labelledby="judul-editor">
+          <div class="bagian-judul"><span class="nomor-bagian nomor-ungu">02</span><div><h2 id="judul-editor">Editor Catatan</h2><p>Last In, First Out · 2 Stack</p></div></div>
+          <div class="editor-toolbar">
+            <button id="tombol-undo" type="button" class="btn btn-sekunder" disabled>↶ Undo</button>
+            <button id="tombol-redo" type="button" class="btn btn-sekunder" disabled>↷ Redo</button>
+          </div>
+          <label class="label-input" for="catatan">CATATAN PELAYANAN</label>
+          <textarea id="catatan" placeholder="Tulis catatan pelayanan, misalnya: Pasien datang pukul 09.00..." rows="11" maxlength="10000" spellcheck="true"></textarea>
+          <div class="indikator-karakter"><span>Perubahan terakhir dapat dibatalkan atau diulang.</span><span><span id="jumlah-karakter">0</span>/<span id="maks-karakter">10000</span> karakter</span></div>
+          <p id="pesan-editor" class="pesan" role="status" aria-live="polite">Mulai mengetik untuk mengaktifkan Undo.</p>
+          <div class="kartu-riwayat"><div><span>Langkah Undo</span><strong id="jumlah-undo">0</strong></div><div><span>Langkah Redo</span><strong id="jumlah-redo">0</strong></div><div><span>Batas riwayat</span><strong id="maks-riwayat">50</strong></div></div>
+          <div class="info-persist"><span aria-hidden="true">◉</span><span id="info-simpan">Catatan disimpan otomatis di browser ini setelah diedit.</span></div>
+        </section>
+      </div>
+      <footer>Proyek 3 · Struktur data murni JS · State antrean hanya tersimpan selama halaman terbuka</footer>
+    </main>
+  </div>
+</body>
+</html>

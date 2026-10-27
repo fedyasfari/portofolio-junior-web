@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 4 — Code Review & Refactor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="halaman">
+      <header>
+        <span class="label">HARI 07 • LAB 04</span>
+        <h1>Code Review & Refactor</h1>
+        <p>Dari kode yang sulit dibaca menjadi kode JavaScript yang rapi, jelas, dan teruji.</p>
+      </header>
+
+      <section class="kartu">
+        <h2>1. Coba kode hasil refactor</h2>
+        <p>Masukkan nilai-nilai dengan koma, lalu isi harga sebelum pajak.</p>
+        <form id="formulir">
+          <div class="form-grid">
+            <label for="nilai">Daftar nilai (pisahkan dengan koma)
+              <input type="text" id="nilai" value="80, 65, 90" autocomplete="off" placeholder="80, 65, 90" />
+            </label>
+            <label for="harga">Harga sebelum pajak (rupiah)
+              <input type="number" id="harga" value="100000" min="0" step="any" />
+            </label>
+          </div>
+          <div class="tombol">
+            <button type="submit">Hitung</button>
+            <button type="button" id="contoh" class="sekunder">Isi contoh</button>
+            <button type="button" id="reset" class="sekunder">Reset</button>
+          </div>
+        </form>
+        <pre id="hasil" class="hasil" aria-live="polite">Menghitung contoh...</pre>
+        <p class="kecil">Rata-rata array kosong adalah 0. Jika input bukan angka, program menampilkan pesan kesalahan yang jelas.</p>
+      </section>
+
+      <section class="kartu">
+        <h2>2. Tabel temuan Code Review</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>No</th><th>Pelanggaran</th><th>Prinsip</th><th>Perbaikan</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Nama d, f, g, r, h, k tidak bermakna</td><td>Penamaan</td><td>Gunakan nama daftarNilai, hitungRataRata, tentukanGrade, dan hitungHargaDenganPajak</td></tr>
+              <tr><td>2</td><td>Masih menggunakan var</td><td>Guideline modern</td><td>Gunakan const dan let sesuai kebutuhan</td></tr>
+              <tr><td>3</td><td>Format padat tanpa indentasi</td><td>Keterbacaan</td><td>Format konsisten menggunakan Prettier</td></tr>
+              <tr><td>4</td><td>Perbandingan ==</td><td>Perbandingan ketat</td><td>Gunakan ===</td></tr>
+              <tr><td>5</td><td>Angka ajaib 85, 70, 55, 0.11, 80</td><td>Magic number</td><td>Buat konstanta PAJAK, BATAS_GRADE, NILAI_PUJIAN</td></tr>
+              <tr><td>6</td><td>Fungsi h dan k melakukan hal yang sama</td><td>DRY</td><td>Gabungkan menjadi satu fungsi hitungHargaDenganPajak</td></tr>
+              <tr><td>7</td><td>if/else bersarang di fungsi g</td><td>KISS / guard clause</td><td>Gunakan return awal berurutan</td></tr>
+              <tr><td>8</td><td>Array kosong mengakibatkan NaN</td><td>Error handling</td><td>Periksa array kosong dan kembalikan 0</td></tr>
+              <tr><td>9</td><td>Titik koma tidak konsisten</td><td>Konsistensi gaya</td><td>Gunakan titik koma secara konsisten</td></tr>
+              <tr><td>10</td><td>Tidak ada dokumentasi fungsi</td><td>Dokumentasi</td><td>Tambahkan komentar JSDoc singkat</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="kartu">
+        <h2>3. Cara menguji di terminal</h2>
+        <pre class="perintah">npm start
+npm test
+npm run asli</pre>
+        <p class="kecil">Pakai VS Code + Live Server untuk membuka halaman ini. Jangan hanya klik dua kali HTML jika browser membatasi impor ES Module dari <code>file://</code>.</p>
+      </section>
+    </main>
+    <script type="module" src="browser.js"></script>
+  </body>
+</html>
