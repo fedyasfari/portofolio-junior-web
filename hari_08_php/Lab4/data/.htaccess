@@ -1,0 +1,2 @@
+# Apache 2.4: cegah akses langsung ke file log, JSON, dan CSV.
+Require all denied

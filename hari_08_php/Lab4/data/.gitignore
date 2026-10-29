@@ -1,0 +1,4 @@
+# File dibuat otomatis ketika aplikasi dijalankan. Jangan commit log IP pengunjung.
+/log.txt
+/peserta.json
+/peserta.csv

@@ -1,0 +1,7 @@
+# Berkas pribadi dibuat otomatis saat aplikasi berjalan.
+data/tamu.json
+data/admin.hash
+data/.tamu.lock
+# File sementara sistem
+.DS_Store
+Thumbs.db

@@ -1,0 +1,2 @@
+# Apache 2.4 (XAMPP): jangan izinkan orang membaca data/tamu.json atau admin.hash secara langsung.
+Require all denied
