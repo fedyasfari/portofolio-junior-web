@@ -1,0 +1,7 @@
+# Jangan masukkan kredensial nyata ke repository
+/config/config.php
+.env
+/vendor/
+/node_modules/
+*.log
+.DS_Store

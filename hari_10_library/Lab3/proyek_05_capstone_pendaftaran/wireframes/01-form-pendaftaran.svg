@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="780" viewBox="0 0 1120 780">
+<rect x="0" y="0" width="1120" height="780" fill="#eef1f5"/>
+<rect x="55" y="42" width="1010" height="681" rx="10" fill="#ffffff" stroke="#c8d0da" stroke-width="1.5"/>
+<rect x="55" y="42" width="1010" height="78" rx="10" fill="#dce3ea" stroke="#c8d0da" stroke-width="1.5"/>
+<text x="86" y="83" fill="#263746" font-family="Arial, sans-serif" font-size="19" font-weight="bold" text-anchor="start">CAPSTONE • PELATIHAN</text>
+<text x="1024" y="82" fill="#556777" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="end">HALAMAN 1 / 3</text>
+<text x="84" y="158" fill="#273746" font-family="Arial, sans-serif" font-size="27" font-weight="bold" text-anchor="start">Pendaftaran Peserta</text>
+<text x="84" y="184" fill="#536678" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="start">Peserta mengisi identitas, memilih kelas, lalu menyimpan data.</text>
+<rect x="80" y="214" width="960" height="452" rx="8" fill="#fbfcfd" stroke="#d8e0e8" stroke-width="1.5"/>
+<text x="112" y="258" fill="#465768" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="start">Nama lengkap *</text><rect x="112" y="267" width="426" height="43" rx="5" fill="#ffffff" stroke="#a8b4c1" stroke-width="1.5"/><text x="125" y="294" fill="#8a99a8" font-family="Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">Contoh: Rina Amelia</text>
+<text x="566" y="258" fill="#465768" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="start">Email *</text><rect x="566" y="267" width="430" height="43" rx="5" fill="#ffffff" stroke="#a8b4c1" stroke-width="1.5"/><text x="579" y="294" fill="#8a99a8" font-family="Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">nama@example.com</text>
+<text x="112" y="354" fill="#465768" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="start">Nomor HP *</text><rect x="112" y="363" width="426" height="43" rx="5" fill="#ffffff" stroke="#a8b4c1" stroke-width="1.5"/><text x="125" y="390" fill="#8a99a8" font-family="Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">081234567890</text>
+<text x="566" y="354" fill="#465768" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="start">Kelas pelatihan *</text><rect x="566" y="363" width="430" height="43" rx="5" fill="#ffffff" stroke="#a8b4c1" stroke-width="1.5"/><text x="579" y="390" fill="#8a99a8" font-family="Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">[ Pilih kelas v ]</text>
+<text x="112" y="453" fill="#465768" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="start">Alamat (opsional)</text><rect x="112" y="462" width="884" height="43" rx="5" fill="#ffffff" stroke="#a8b4c1" stroke-width="1.5"/><text x="125" y="489" fill="#8a99a8" font-family="Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">Kota / alamat domisili</text>
+<text x="112" y="568" fill="#617387" font-family="Arial, sans-serif" font-size="14" font-weight="normal" text-anchor="start">(*) Wajib diisi • Email tidak boleh sama • HP diawali 08</text>
+<rect x="112" y="592" width="191" height="43" rx="6" fill="#273c4a" stroke="#273c4a" stroke-width="1.5"/><text x="207.5" y="619" fill="#ffffff" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Kirim Pendaftaran</text>
+<rect x="320" y="592" width="124" height="43" rx="6" fill="#edf2f5" stroke="#273c4a" stroke-width="1.5"/><text x="382.0" y="619" fill="#293e4c" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle">Reset</text>
+<line x1="85" y1="688" x2="1033" y2="688" stroke="#aeb9c6" stroke-width="1.3"/>
+<text x="86" y="708" fill="#657487" font-family="Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="start">PBL Hari 9 • Sprint 0 • Sketsa antarmuka / bukan desain final</text>
+</svg>
