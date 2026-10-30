@@ -1,0 +1,12 @@
+{
+    "name": "peserta/pendaftaran-pelatihan",
+    "authors": [
+        {
+            "name": "Fedy Asfari",
+            "email": "fedyasfari@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}
