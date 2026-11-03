@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasil Solusi - Lab 1</title>
+  <style>
+    body { font: 16px/1.6 Arial, sans-serif; max-width: 650px; margin: 48px auto; padding: 0 20px; }
+    .hasil { background: #eef6f1; padding: 18px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Hasil Lab 1: Keranjang Belanja</h1>
+  <p>Periksa juga <strong>F12 → Console</strong> untuk melihat setiap subtotal, total, diskon, dan pengujian.</p>
+  <section class="hasil" aria-label="Rincian belanja">
+    <div id="rincian"></div>
+  </section>
+  <script src="solusi-keranjang.js"></script>
+  <script>
+    const rincian = document.getElementById('rincian');
+    // Menggunakan textContent agar angka hasil perhitungan ditampilkan dengan aman.
+    const baris = [
+      `Buku (2): ${formatRupiah(hitungSubtotal(keranjang[0]))}`,
+      `Pensil (10): ${formatRupiah(hitungSubtotal(keranjang[1]))}`,
+      `Penghapus (1): ${formatRupiah(hitungSubtotal(keranjang[2]))}`,
+      `Total belanja: ${formatRupiah(total)}`,
+      `Diskon: ${formatRupiah(diskon)}`,
+      `Total bayar: ${formatRupiah(totalBayar)}`
+    ];
+    rincian.textContent = baris.join(' | ');
+  </script>
+</body>
+</html>

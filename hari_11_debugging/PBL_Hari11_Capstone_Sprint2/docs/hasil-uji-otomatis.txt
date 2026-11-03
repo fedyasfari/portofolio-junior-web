@@ -1,0 +1,17 @@
+[LOLOS] HP 10 digit
+[LOLOS] HP 9 digit
+[LOLOS] HP 13 digit
+[LOLOS] HP 14 digit
+[LOLOS] HP huruf
+[LOLOS] HP awalan +62 ditolak
+[LOLOS] HP diawali 07 ditolak
+[LOLOS] HP spasi ditolak
+[LOLOS] Kuota normal
+[LOLOS] Kuota penuh
+[LOLOS] Kuota berlebih tidak negatif
+[LOLOS] Kuota awal
+[LOLOS] Kuota nol
+[LOLOS] Nomor bukti ID 7
+[LOLOS] Nomor bukti ID 0
+[LOLOS] Nomor bukti ID 123
+Hasil: 16/16 lolos.

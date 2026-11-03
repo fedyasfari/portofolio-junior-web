@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
-        'name' => 'peserta/pendaftaran-pelatihan',
+        'name' => 'belajar/capstone-pendaftaran',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8661869fe35061bbfe419e69571383d630e6d954',
+        'reference' => '9a93f7e59b8aa895210db6e16f3fd5600bb30437',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'belajar/capstone-pendaftaran' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '9a93f7e59b8aa895210db6e16f3fd5600bb30437',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'dompdf/dompdf' => array(
             'pretty_version' => 'v3.1.6',
             'version' => '3.1.6.0',
@@ -43,15 +52,6 @@
             'reference' => '15e16663bd6f512352209d0e3a789c0a691c0d9b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../masterminds/html5',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'peserta/pendaftaran-pelatihan' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '8661869fe35061bbfe419e69571383d630e6d954',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

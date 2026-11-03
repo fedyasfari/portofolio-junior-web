@@ -1,0 +1,13 @@
+{
+    "name": "peserta/pendaftaran-pelatihan",
+    "description": "Proyek latihan PBL Hari 10 Capstone Sprint 1",
+    "type": "project",
+    "require": {
+        "php": "^8.1",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-dom": "*",
+        "ext-mbstring": "*",
+        "dompdf/dompdf": "^3.1"
+    }
+}

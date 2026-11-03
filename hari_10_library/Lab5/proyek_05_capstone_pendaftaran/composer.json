@@ -1,0 +1,12 @@
+{
+    "name": "belajar/capstone-pendaftaran",
+    "authors": [
+        {
+            "name": "Fedy Asfari",
+            "email": "fedyasfari@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}
