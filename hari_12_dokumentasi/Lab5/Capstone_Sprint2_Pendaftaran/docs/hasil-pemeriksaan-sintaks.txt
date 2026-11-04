@@ -1,0 +1,27 @@
+
+-- Pemeriksaan sintaks semua berkas PHP --
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/daftar.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/cetak.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/hapus.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/sukses.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/tambah.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/logout.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/index.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/login.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/public/ubah.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/tests/uji-integrasi.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/tests/jalankan.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/config/config.contoh.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/templates/header.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/templates/bukti.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/templates/footer.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/templates/_form.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/src/validasi.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/src/pendaftar.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/src/auth.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/src/bootstrap.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/src/database.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/src/kuota.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/src/helpers.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/database/migrasi-sprint2.php
+No syntax errors detected in /mnt/data/Capstone_Hari11_Sprint2/database/buat-admin.php

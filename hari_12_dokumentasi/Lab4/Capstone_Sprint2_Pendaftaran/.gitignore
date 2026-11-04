@@ -1,0 +1,15 @@
+/config/config.php
+/vendor/
+/node_modules/
+/.env
+/logs/
+/docs/bukti-screenshot/*.png
+
+# Generator dokumentasi PHP
+/phpDocumentor.phar
+
+# Dependensi Node.js
+/node_modules/
+
+# Cache phpDocumentor
+/.phpdoc/

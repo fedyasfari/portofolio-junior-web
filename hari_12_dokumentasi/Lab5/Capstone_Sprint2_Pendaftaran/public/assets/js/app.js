@@ -1,0 +1,86 @@
+/**
+ * Menyiapkan notifikasi, konfirmasi penghapusan, dan tabel setelah HTML siap.
+ *
+ * @returns {void} Hanya memasang event handler dan inisialisasi komponen.
+ * @example
+ * // Dipanggil oleh browser ketika DOMContentLoaded terjadi.
+ * document.addEventListener('DOMContentLoaded', inisialisasiAntarmuka);
+ */
+function inisialisasiAntarmuka() {
+  // SweetAlert2 untuk flash; jika CDN tidak tersedia, alert Bootstrap tetap ada.
+  const flash = document.getElementById('flash');
+  if (flash && window.Swal) {
+    flash.hidden = true;
+    const kind = flash.dataset.tipe === 'danger' ? 'error' : (flash.dataset.tipe || 'info');
+    window.Swal.fire({
+      toast: true, position: 'top-end', icon: kind,
+      title: flash.dataset.pesan || flash.textContent.trim(),
+      timer: 3000, timerProgressBar: true, showConfirmButton: false,
+    });
+  }
+
+  /**
+   * Menangani pengiriman form hapus setelah pengguna memberikan konfirmasi.
+   * Event didelegasikan ke document agar tetap bekerja ketika DataTables menggambar ulang baris.
+   *
+   * @param {SubmitEvent} event Peristiwa submit dari formulir mana pun pada halaman.
+   * @returns {void} Submit normal ditunda untuk form .form-hapus hingga dikonfirmasi.
+   */
+  function tanganiSubmitHapus(event) {
+    const form = event.target;
+    if (!(form instanceof HTMLFormElement) || !form.matches('.form-hapus')) return;
+    const konfirmasi = form.querySelector('input[name="konfirmasi"]');
+    // Jika tidak ada JS, server menolak nilai 0. Jangan hilangkan CSRF.
+    event.preventDefault();
+    if (!konfirmasi) return;
+    const nama = form.dataset.nama || 'ini';
+
+    /**
+     * Memberi penanda konfirmasi lalu mengirim form secara langsung.
+     * Pemanggilan form.submit() tidak memicu event submit berulang.
+     *
+     * @returns {void} Mengirim form ke endpoint hapus.php; tidak mengembalikan nilai.
+     */
+    const kirim = () => { konfirmasi.value = '1'; form.submit(); };
+    if (window.Swal) {
+      /**
+       * Memproses jawaban dialog SweetAlert2 setelah pengguna memilih Ya/Batal.
+       *
+       * @param {{isConfirmed: boolean}} hasil Hasil konfirmasi SweetAlert2.
+       * @returns {void} Mengirim form hanya bila isConfirmed bernilai true.
+       */
+      const tanganiKonfirmasi = (hasil) => { if (hasil.isConfirmed) kirim(); };
+      window.Swal.fire({
+        title: 'Hapus data?', text: `Data ${nama} akan dihapus permanen.`,
+        icon: 'warning', showCancelButton: true,
+        confirmButtonText: 'Ya, hapus', cancelButtonText: 'Batal',
+        focusCancel: true, reverseButtons: true,
+      }).then(tanganiKonfirmasi);
+    } else if (window.confirm(`Data ${nama} akan dihapus permanen. Lanjutkan?`)) {
+      kirim();
+    }
+  }
+  document.addEventListener('submit', tanganiSubmitHapus);
+
+  const tabel = document.getElementById('tabelPendaftar');
+  if (!tabel) return;
+  if (window.jQuery?.fn && typeof window.jQuery.fn.DataTable === 'function') {
+    window.jQuery(tabel).DataTable({
+      pageLength: 10,
+      order: [], // hormati ORDER BY p.id DESC dari SQL
+      language: {
+        search: 'Cari:', lengthMenu: 'Tampilkan _MENU_ entri',
+        info: 'Menampilkan _START_–_END_ dari _TOTAL_ peserta',
+        infoEmpty: 'Belum ada peserta',
+        zeroRecords: 'Tidak ditemukan data yang sesuai',
+        emptyTable: 'Belum ada pendaftar',
+        paginate: { first: 'Awal', previous: 'Sebelumnya', next: 'Berikutnya', last: 'Akhir' },
+      },
+      columnDefs: [{ targets: -1, orderable: false, searchable: false }],
+    });
+  } else {
+    console.warn('DataTables belum dimuat: periksa CDN dan urutan library di footer.php.');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', inisialisasiAntarmuka);
